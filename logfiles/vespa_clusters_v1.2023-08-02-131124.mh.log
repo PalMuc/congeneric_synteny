@@ -1,0 +1,130 @@
+#TIME-Wed Aug  2 13:11:24 2023
+/home/wrf/git/sequences/makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/vespa/iyVesCrab1_vs_iVesVel2.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/vespa/GCF_910589235.1_iyVesCrab1.2_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/vespa/GCF_912470025.1_iVesVel2.1_protein.x.n.faa -p 234 -o vespa_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 13:11:24 2023
+# Using Python version: 3.8.10
+#TIME-Wed Aug  2 13:11:24 2023
+# /mnt/data/project/speciation-synteny/datasets/vespa/iyVesCrab1_vs_iVesVel2.renamed.blastp.tab input file detected
+#TIME-Wed Aug  2 13:11:24 2023
+# /mnt/data/project/speciation-synteny/datasets/vespa/GCF_910589235.1_iyVesCrab1.2_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/vespa/GCF_912470025.1_iVesVel2.1_protein.x.n.faa used as fasta database
+#TIME-Wed Aug  2 13:11:24 2023
+# Counted 20263 total proteins for 2 species  Wed Aug  2 13:11:24 2023
+#TIME-Wed Aug  2 13:11:24 2023
+T_genes	iVesVel2	10059
+T_genes	iyVesCrab1	10204
+#TIME-Wed Aug  2 13:11:24 2023
+N_bhits	iVesVel2	9566
+N_bhits	iyVesCrab1	9536
+#TIME-Wed Aug  2 13:11:24 2023
+# Counting nodes in subgraphs
+#TIME-Wed Aug  2 13:11:24 2023
+# Found 19102 subgraphs, pruning small subgraphs (0 nodes)
+#TIME-Wed Aug  2 13:11:24 2023
+F_edge	all	39177
+F_edge	non-self	39177
+F_edge	passed-min-overlap	36245
+F_edge	passed-max-overlap	32714
+F_edge	passed-bitscore	13415
+F_edge	retained-edges	13415
+#TIME-Wed Aug  2 13:11:24 2023
+N_nodes	nodes	19102
+N_nodes	filtered-nodes	19102
+#TIME-Wed Aug  2 13:11:24 2023
+#CMD  mcl allvall_edges_vespa_clusters_v1.abc --abc -I 2.1 -o mcl_gene_clusters_vespa_clusters_v1.abc -te 8
+#TIME-Wed Aug  2 13:11:26 2023
+# fasta file contains 20263 records
+#TIME-Wed Aug  2 13:11:26 2023
+N_seqs	30	1
+N_seqs	22	1
+N_seqs	20	1
+N_seqs	17	1
+N_seqs	15	2
+N_seqs	14	3
+N_seqs	13	3
+N_seqs	12	4
+N_seqs	11	11
+N_seqs	10	14
+N_seqs	9	9
+N_seqs	8	13
+N_seqs	7	14
+N_seqs	6	25
+N_seqs	5	25
+N_seqs	4	130
+N_seqs	3	63
+N_seqs	2	8663
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-1	30	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-2	22	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-3	20	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-4	17	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-5	15	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-6	15	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-7	14	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-8	14	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-9	14	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-10	13	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-11	13	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-12	13	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-13	12	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-14	12	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-15	12	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-16	12	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-17	11	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-18	11	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-19	11	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-20	11	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-21	11	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-22	11	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-23	11	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-24	11	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-25	11	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-26	11	removed
+#TIME-Wed Aug  2 13:11:26 2023
+LARGE-27	11	removed
+#TIME-Wed Aug  2 13:11:26 2023
+F_clust	total-clusters: total number of clusters	8983
+F_clust	seq_under_max_len: total sequences shorter than length cutoff 15000	19098
+F_clust	max_sequences: clusters with fewer than 10 sequences	8954
+F_clust	min_taxa: clusters with more than 2 taxa	8928
+F_clust	taxa_mean: clusters with fewer than 9 seqs per taxon	8928
+F_clust	single_copy_gene: clusters of a single copy ortholog	8661
+F_clust	paralogous_gene: clusters with more than one copy in any taxon	267
+F_clust	single_species: cluster has only one taxon	26
+#TIME-Wed Aug  2 13:11:26 2023
+# found 2 total taxa
+#TIME-Wed Aug  2 13:11:26 2023
+N_genes	iVesVel2	9367
+N_genes	iyVesCrab1	9362
+#TIME-Wed Aug  2 13:11:26 2023
+N_ortho	iVesVel2	8661
+N_ortho	iyVesCrab1	8661
+#TIME-Wed Aug  2 13:11:26 2023
+N_taxa	2	8928
+N_taxa	1	26
+#TIME-Wed Aug  2 13:11:26 2023
+#TIME-Process completed in 0.0 minutes
+## Great success!!:  Wed Aug  2 13:11:26 2023

@@ -1,0 +1,184 @@
+#TIME-Wed Aug  2 13:56:38 2023
+/home/wrf/git/sequences/makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_AnaObli1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/insects/GCF_027943255.1_idAnaObli1_1.0_protein.x.n.faa -p 234 -o insects1_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 13:56:38 2023
+# Using Python version: 3.8.10
+#TIME-Wed Aug  2 13:56:38 2023
+# /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_AnaObli1.renamed.blastp.tab input file detected
+#TIME-Wed Aug  2 13:56:38 2023
+# /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/insects/GCF_027943255.1_idAnaObli1_1.0_protein.x.n.faa used as fasta database
+#TIME-Wed Aug  2 13:56:38 2023
+# Counted 28339 total proteins for 2 species  Wed Aug  2 13:56:38 2023
+#TIME-Wed Aug  2 13:56:38 2023
+T_genes	AnaObli1	14353
+T_genes	Dmel6	13986
+#TIME-Wed Aug  2 13:56:38 2023
+N_bhits	AnaObli1	8408
+N_bhits	Dmel6	8475
+#TIME-Wed Aug  2 13:56:38 2023
+# Counting nodes in subgraphs
+#TIME-Wed Aug  2 13:56:38 2023
+# Found 16883 subgraphs, pruning small subgraphs (0 nodes)
+#TIME-Wed Aug  2 13:56:38 2023
+F_edge	all	53395
+F_edge	non-self	53395
+F_edge	passed-min-overlap	50357
+F_edge	passed-max-overlap	46475
+F_edge	passed-bitscore	15313
+F_edge	retained-edges	15313
+#TIME-Wed Aug  2 13:56:38 2023
+N_nodes	nodes	16883
+N_nodes	filtered-nodes	16883
+#TIME-Wed Aug  2 13:56:38 2023
+#CMD  mcl allvall_edges_insects1_clusters_v1.abc --abc -I 2.1 -o mcl_gene_clusters_insects1_clusters_v1.abc -te 8
+#TIME-Wed Aug  2 13:56:40 2023
+# fasta file contains 28339 records
+#TIME-Wed Aug  2 13:56:40 2023
+N_seqs	30	2
+N_seqs	29	1
+N_seqs	26	1
+N_seqs	25	1
+N_seqs	24	2
+N_seqs	23	2
+N_seqs	21	1
+N_seqs	20	2
+N_seqs	19	3
+N_seqs	18	2
+N_seqs	17	5
+N_seqs	16	4
+N_seqs	15	4
+N_seqs	14	3
+N_seqs	13	5
+N_seqs	12	6
+N_seqs	11	6
+N_seqs	10	17
+N_seqs	9	18
+N_seqs	8	19
+N_seqs	7	44
+N_seqs	6	74
+N_seqs	5	82
+N_seqs	4	222
+N_seqs	3	431
+N_seqs	2	6107
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-1	30	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-2	30	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-3	29	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-4	26	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-5	25	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-6	24	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-7	24	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-8	23	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-9	23	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-10	21	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-11	20	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-12	20	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-13	19	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-14	19	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-15	19	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-16	18	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-17	18	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-18	17	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-19	17	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-20	17	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-21	17	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-22	17	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-23	16	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-24	16	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-25	16	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-26	16	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-27	15	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-28	15	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-29	15	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-30	15	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-31	14	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-32	14	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-33	14	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-34	13	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-35	13	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-36	13	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-37	13	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-38	13	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-39	12	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-40	12	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-41	12	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-42	12	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-43	12	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-44	12	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-45	11	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-46	11	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-47	11	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-48	11	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-49	11	removed
+#TIME-Wed Aug  2 13:56:40 2023
+LARGE-50	11	removed
+#TIME-Wed Aug  2 13:56:40 2023
+F_clust	total-clusters: total number of clusters	7064
+F_clust	seq_under_max_len: total sequences shorter than length cutoff 15000	16879
+F_clust	max_sequences: clusters with fewer than 10 sequences	7012
+F_clust	min_taxa: clusters with more than 2 taxa	6979
+F_clust	taxa_mean: clusters with fewer than 9 seqs per taxon	6979
+F_clust	single_copy_gene: clusters of a single copy ortholog	6105
+F_clust	paralogous_gene: clusters with more than one copy in any taxon	874
+F_clust	single_species: cluster has only one taxon	33
+#TIME-Wed Aug  2 13:56:40 2023
+# found 2 total taxa
+#TIME-Wed Aug  2 13:56:40 2023
+N_genes	AnaObli1	7960
+N_genes	Dmel6	8077
+#TIME-Wed Aug  2 13:56:40 2023
+N_ortho	AnaObli1	6105
+N_ortho	Dmel6	6105
+#TIME-Wed Aug  2 13:56:40 2023
+N_taxa	2	6979
+N_taxa	1	33
+#TIME-Wed Aug  2 13:56:40 2023
+#TIME-Process completed in 0.0 minutes
+## Great success!!:  Wed Aug  2 13:56:40 2023

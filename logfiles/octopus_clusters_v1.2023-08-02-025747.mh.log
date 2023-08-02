@@ -1,0 +1,312 @@
+#TIME-Wed Aug  2 02:57:47 2023
+/home/wrf/git/sequences/makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/octopus/Obi_vs_Osi.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/octopus/GCF_001194135.2_ASM119413v2_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.n.faa -p 234 -o octopus_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 02:57:47 2023
+# Using Python version: 3.8.10
+#TIME-Wed Aug  2 02:57:47 2023
+# /mnt/data/project/speciation-synteny/datasets/octopus/Obi_vs_Osi.renamed.blastp.tab input file detected
+#TIME-Wed Aug  2 02:57:47 2023
+# /mnt/data/project/speciation-synteny/datasets/octopus/GCF_001194135.2_ASM119413v2_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.n.faa used as fasta database
+#TIME-Wed Aug  2 02:57:48 2023
+# Counted 34570 total proteins for 2 species  Wed Aug  2 02:57:48 2023
+#TIME-Wed Aug  2 02:57:48 2023
+T_genes	Obi	15684
+T_genes	Osi	18886
+#TIME-Wed Aug  2 02:57:48 2023
+N_bhits	Obi	12248
+N_bhits	Osi	13266
+#TIME-Wed Aug  2 02:57:48 2023
+# Counting nodes in subgraphs
+#TIME-Wed Aug  2 02:57:48 2023
+# Found 25514 subgraphs, pruning small subgraphs (0 nodes)
+#TIME-Wed Aug  2 02:57:48 2023
+F_edge	all	97031
+F_edge	non-self	97031
+F_edge	passed-min-overlap	85381
+F_edge	passed-max-overlap	72457
+F_edge	passed-bitscore	26863
+F_edge	retained-edges	26863
+#TIME-Wed Aug  2 02:57:48 2023
+N_nodes	nodes	25514
+N_nodes	filtered-nodes	25514
+#TIME-Wed Aug  2 02:57:48 2023
+#CMD  mcl allvall_edges_octopus_clusters_v1.abc --abc -I 2.1 -o mcl_gene_clusters_octopus_clusters_v1.abc -te 8
+#TIME-Wed Aug  2 02:57:50 2023
+# fasta file contains 34570 records
+#TIME-Wed Aug  2 02:57:50 2023
+N_seqs	42	2
+N_seqs	39	1
+N_seqs	37	1
+N_seqs	33	1
+N_seqs	32	1
+N_seqs	30	2
+N_seqs	28	6
+N_seqs	27	1
+N_seqs	26	3
+N_seqs	25	6
+N_seqs	24	4
+N_seqs	23	1
+N_seqs	22	3
+N_seqs	21	3
+N_seqs	20	4
+N_seqs	19	5
+N_seqs	18	1
+N_seqs	17	2
+N_seqs	16	4
+N_seqs	15	9
+N_seqs	14	7
+N_seqs	13	17
+N_seqs	12	13
+N_seqs	11	13
+N_seqs	10	17
+N_seqs	9	22
+N_seqs	8	27
+N_seqs	7	39
+N_seqs	6	79
+N_seqs	5	81
+N_seqs	4	246
+N_seqs	3	349
+N_seqs	2	9873
+N_seqs	1	1
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-1	42	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-2	42	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-3	39	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-4	37	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-5	33	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-6	32	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-7	30	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-8	30	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-9	28	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-10	28	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-11	28	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-12	28	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-13	28	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-14	28	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-15	27	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-16	26	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-17	26	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-18	26	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-19	25	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-20	25	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-21	25	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-22	25	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-23	25	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-24	25	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-25	24	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-26	24	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-27	24	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-28	24	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-29	23	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-30	22	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-31	22	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-32	22	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-33	21	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-34	21	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-35	21	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-36	20	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-37	20	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-38	20	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-39	20	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-40	19	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-41	19	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-42	19	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-43	19	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-44	19	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-45	18	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-46	17	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-47	17	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-48	16	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-49	16	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-50	16	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-51	16	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-52	15	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-53	15	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-54	15	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-55	15	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-56	15	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-57	15	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-58	15	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-59	15	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-60	15	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-61	14	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-62	14	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-63	14	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-64	14	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-65	14	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-66	14	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-67	14	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-68	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-69	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-70	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-71	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-72	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-73	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-74	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-75	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-76	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-77	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-78	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-79	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-80	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-81	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-82	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-83	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-84	13	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-85	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-86	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-87	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-88	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-89	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-90	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-91	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-92	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-93	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-94	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-95	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-96	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-97	12	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-98	11	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-99	11	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-100	11	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-101	11	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-102	11	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-103	11	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-104	11	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-105	11	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-106	11	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-107	11	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-108	11	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-109	11	removed
+#TIME-Wed Aug  2 02:57:50 2023
+LARGE-110	11	removed
+#TIME-Wed Aug  2 02:57:51 2023
+F_clust	total-clusters: total number of clusters	10844
+F_clust	seq_under_max_len: total sequences shorter than length cutoff 15000	25511
+F_clust	max_sequences: clusters with fewer than 10 sequences	10732
+F_clust	min_taxa: clusters with more than 2 taxa	10694
+F_clust	taxa_mean: clusters with fewer than 9 seqs per taxon	10694
+F_clust	single_copy_gene: clusters of a single copy ortholog	9871
+F_clust	paralogous_gene: clusters with more than one copy in any taxon	823
+F_clust	single_species: cluster has only one taxon	38
+#TIME-Wed Aug  2 02:57:51 2023
+# found 2 total taxa
+#TIME-Wed Aug  2 02:57:51 2023
+N_genes	Obi	11519
+N_genes	Osi	11992
+#TIME-Wed Aug  2 02:57:51 2023
+N_ortho	Obi	9871
+N_ortho	Osi	9871
+#TIME-Wed Aug  2 02:57:51 2023
+N_taxa	2	10694
+N_taxa	1	38
+#TIME-Wed Aug  2 02:57:51 2023
+#TIME-Process completed in 0.1 minutes
+## Great success!!:  Wed Aug  2 02:57:51 2023

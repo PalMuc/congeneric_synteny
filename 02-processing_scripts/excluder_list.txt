@@ -1,0 +1,112 @@
+isoform X2
+isoform X3
+isoform X4
+isoform X5
+isoform X6
+isoform X7
+isoform X8
+isoform X9
+isoform X10
+isoform X11
+isoform X12
+isoform X13
+isoform X14
+isoform X15
+isoform X16
+isoform X17
+isoform X18
+isoform X19
+isoform X20
+isoform X21
+isoform X22
+isoform X23
+isoform X24
+isoform X25
+isoform X26
+isoform X27
+isoform X28
+isoform X29
+isoform X30
+isoform X31
+isoform X32
+isoform X33
+isoform X34
+isoform X35
+isoform X36
+isoform X37
+isoform X38
+isoform X39
+isoform X40
+isoform X41
+isoform X42
+isoform X43
+isoform X44
+isoform X45
+isoform X46
+isoform X47
+isoform X48
+isoform X49
+isoform X50
+isoform X51
+isoform X52
+isoform X53
+isoform X54
+isoform X55
+isoform X56
+isoform X57
+isoform X58
+isoform X59
+isoform X60
+isoform X61
+isoform X62
+isoform X63
+isoform X64
+isoform X65
+isoform X66
+isoform X67
+isoform X68
+isoform X69
+isoform X70
+isoform X71
+isoform X72
+isoform X73
+isoform X74
+isoform X75
+isoform X76
+isoform X77
+isoform X78
+isoform X79
+isoform X80
+isoform X81
+isoform X82
+isoform X83
+isoform X84
+isoform X85
+isoform X86
+isoform X87
+isoform X88
+isoform X89
+isoform X90
+isoform X91
+isoform X92
+isoform X93
+isoform X94
+isoform X95
+isoform X96
+isoform X97
+isoform X98
+isoform X99
+.t2
+.t3
+.t4
+.t5
+.t6
+.t7
+.t8
+.t9
+.t10
+.t11
+.t12
+.t13
+.t14
+.t15

@@ -1,0 +1,74 @@
+#TIME-Tue Aug  1 16:17:25 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g thunnus/GCF_914725855.1_fThuAlb1.1_genomic.gff.gz -p thunnus/GCF_914725855.1_fThuAlb1.1_protein.faa.gz -f thunnus/GCF_914725855.1_fThuAlb1.1_genomic.x.gff -o thunnus/GCF_914725855.1_fThuAlb1.1_protein.x.faa
+#TIME-Tue Aug  1 16:17:36 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g thunnus/GCF_910596095.1_fThuMac1.1_genomic.gff.gz -p thunnus/GCF_910596095.1_fThuMac1.1_protein.faa.gz -f thunnus/GCF_910596095.1_fThuMac1.1_genomic.x.gff -o thunnus/GCF_910596095.1_fThuMac1.1_protein.x.faa
+#TIME-Tue Aug  1 16:17:45 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.faa
+#TIME-Tue Aug  1 16:17:45 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_914725855.1_fThuAlb1.1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.faa -o thunnus/fThuAlb1_vs_fThuMac1.blastp.tab
+#TIME-Tue Aug  1 16:18:03 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/thunnus/fThuAlb1_vs_fThuMac1.blastp.tab -q thunnus/GCF_914725855.1_fThuAlb1.1_genomic.gff.gz -f thunnus/GCF_914725855.1_fThuAlb1.1_genomic.fna.gz -d thunnus/GCF_910596095.1_fThuMac1.1_genomic.gff.gz -F thunnus/GCF_910596095.1_fThuMac1.1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Tue Aug  1 16:18:38 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/thunnus/fThuAlb1_vs_fThuMac1.scaffold_synteny.tab Thunnus.albacares Thunnus.maccoyii 153
+#TIME-Tue Aug  1 16:18:57 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/thunnus/fThuAlb1_vs_fThuMac1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_914725855.1_fThuAlb1.1_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_genomic.x.gff --genbank-gff -z 157452 -T
+#TIME-Tue Aug  1 16:19:03 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/thunnus/fThuAlb1_vs_fThuMac1.microsynteny.tab 0.60
+#TIME-Tue Aug  1 16:19:10 2023
+fastarenamer.py -p fThuAlb1 -j | /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_914725855.1_fThuAlb1.1_protein.x.faa
+#TIME-Tue Aug  1 16:19:10 2023
+fastarenamer.py -p fThuMac1 -j | /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.faa
+#TIME-Tue Aug  1 16:19:11 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.n.faa
+#TIME-Tue Aug  1 16:19:11 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_914725855.1_fThuAlb1.1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.n.faa -o thunnus/fThuAlb1_vs_fThuMac1.renamed.blastp.tab
+#TIME-Tue Aug  1 16:19:29 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g bufo/GCF_014858855.1_ASM1485885v1_genomic.gff.gz -p bufo/GCF_014858855.1_ASM1485885v1_protein.faa.gz -f bufo/GCF_014858855.1_ASM1485885v1_genomic.x.gff -o bufo/GCF_014858855.1_ASM1485885v1_protein.x.faa
+#TIME-Tue Aug  1 16:19:36 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g bufo/GCF_905171765.1_aBufBuf1.1_genomic.gff.gz -p bufo/GCF_905171765.1_aBufBuf1.1_protein.faa.gz -f bufo/GCF_905171765.1_aBufBuf1.1_genomic.x.gff -o bufo/GCF_905171765.1_aBufBuf1.1_protein.x.faa
+#TIME-Tue Aug  1 16:19:44 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.faa
+#TIME-Tue Aug  1 16:19:44 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/bufo/GCF_014858855.1_ASM1485885v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.faa -o bufo/Bgarg_vs_aBufBuf1.blastp.tab
+#TIME-Tue Aug  1 16:19:57 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/bufo/Bgarg_vs_aBufBuf1.blastp.tab -q bufo/GCF_014858855.1_ASM1485885v1_genomic.gff.gz -f bufo/GCF_014858855.1_ASM1485885v1_genomic.fna.gz -d bufo/GCF_905171765.1_aBufBuf1.1_genomic.gff.gz -F bufo/GCF_905171765.1_aBufBuf1.1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Tue Aug  1 16:22:07 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/bufo/Bgarg_vs_aBufBuf1.scaffold_synteny.tab Bufo.gargarizans Bufo.bufo 216
+#TIME-Tue Aug  1 16:24:02 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/bufo/Bgarg_vs_aBufBuf1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/bufo/GCF_014858855.1_ASM1485885v1_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_genomic.x.gff --genbank-gff -z 959022 -T
+#TIME-Tue Aug  1 16:24:09 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/bufo/Bgarg_vs_aBufBuf1.microsynteny.tab 0.85
+#TIME-Tue Aug  1 16:24:24 2023
+fastarenamer.py -p Bgarg -j | /mnt/data/project/speciation-synteny/datasets/bufo/GCF_014858855.1_ASM1485885v1_protein.x.faa
+#TIME-Tue Aug  1 16:24:24 2023
+fastarenamer.py -p aBufBuf1 -j | /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.faa
+#TIME-Tue Aug  1 16:24:24 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.n.faa
+#TIME-Tue Aug  1 16:24:24 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/bufo/GCF_014858855.1_ASM1485885v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.n.faa -o bufo/Bgarg_vs_aBufBuf1.renamed.blastp.tab
+#TIME-Tue Aug  1 16:24:37 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g octopus/GCF_001194135.2_ASM119413v2_genomic.gff.gz -p octopus/GCF_001194135.2_ASM119413v2_protein.faa.gz -f octopus/GCF_001194135.2_ASM119413v2_genomic.x.gff -o octopus/GCF_001194135.2_ASM119413v2_protein.x.faa
+#TIME-Tue Aug  1 16:24:43 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g octopus/GCF_006345805.1_ASM634580v1_genomic.gff.gz -p octopus/GCF_006345805.1_ASM634580v1_protein.faa.gz -f octopus/GCF_006345805.1_ASM634580v1_genomic.x.gff -o octopus/GCF_006345805.1_ASM634580v1_protein.x.faa
+#TIME-Tue Aug  1 16:24:49 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.faa
+#TIME-Tue Aug  1 16:24:50 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/octopus/GCF_001194135.2_ASM119413v2_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.faa -o octopus/Obi_vs_Osi.blastp.tab
+#TIME-Tue Aug  1 16:24:56 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/octopus/Obi_vs_Osi.blastp.tab -q octopus/GCF_001194135.2_ASM119413v2_genomic.gff.gz -f octopus/GCF_001194135.2_ASM119413v2_genomic.fna.gz -d octopus/GCF_006345805.1_ASM634580v1_genomic.gff.gz -F octopus/GCF_006345805.1_ASM634580v1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Tue Aug  1 16:26:09 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/octopus/Obi_vs_Osi.scaffold_synteny.tab Octopus.bimaculoides Octopus.sinensis 198
+#TIME-Tue Aug  1 16:27:12 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/octopus/Obi_vs_Osi.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/octopus/GCF_001194135.2_ASM119413v2_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_genomic.x.gff --genbank-gff -z 506168 -T
+#TIME-Tue Aug  1 16:27:15 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/octopus/Obi_vs_Osi.microsynteny.tab 0.78
+#TIME-Tue Aug  1 16:27:22 2023
+fastarenamer.py -p Obi -j | /mnt/data/project/speciation-synteny/datasets/octopus/GCF_001194135.2_ASM119413v2_protein.x.faa
+#TIME-Tue Aug  1 16:27:22 2023
+fastarenamer.py -p Osi -j | /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.faa
+#TIME-Tue Aug  1 16:27:22 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.n.faa
+#TIME-Tue Aug  1 16:27:22 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/octopus/GCF_001194135.2_ASM119413v2_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.n.faa -o octopus/Obi_vs_Osi.renamed.blastp.tab
+#TIME-Tue Aug  1 16:27:29 2023
+#TIME-Process completed in 10.1 minutes

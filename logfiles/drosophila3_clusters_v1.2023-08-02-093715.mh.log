@@ -1,0 +1,202 @@
+#TIME-Wed Aug  2 09:37:15 2023
+/home/wrf/git/sequences/makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DpseMV25.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_009870125.1_UCI_Dpse_MV25_protein.x.n.faa -p 234 -o drosophila3_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 09:37:15 2023
+# Using Python version: 3.8.10
+#TIME-Wed Aug  2 09:37:15 2023
+# /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DpseMV25.renamed.blastp.tab input file detected
+#TIME-Wed Aug  2 09:37:15 2023
+# /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_009870125.1_UCI_Dpse_MV25_protein.x.n.faa used as fasta database
+#TIME-Wed Aug  2 09:37:15 2023
+# Counted 28329 total proteins for 2 species  Wed Aug  2 09:37:15 2023
+#TIME-Wed Aug  2 09:37:15 2023
+T_genes	Dmel6	13986
+T_genes	DpseMV25	14343
+#TIME-Wed Aug  2 09:37:15 2023
+N_bhits	Dmel6	11513
+N_bhits	DpseMV25	11665
+#TIME-Wed Aug  2 09:37:15 2023
+# Counting nodes in subgraphs
+#TIME-Wed Aug  2 09:37:16 2023
+# Found 23178 subgraphs, pruning small subgraphs (0 nodes)
+#TIME-Wed Aug  2 09:37:16 2023
+F_edge	all	58834
+F_edge	non-self	58834
+F_edge	passed-min-overlap	56071
+F_edge	passed-max-overlap	52776
+F_edge	passed-bitscore	20433
+F_edge	retained-edges	20433
+#TIME-Wed Aug  2 09:37:16 2023
+N_nodes	nodes	23178
+N_nodes	filtered-nodes	23178
+#TIME-Wed Aug  2 09:37:16 2023
+#CMD  mcl allvall_edges_drosophila3_clusters_v1.abc --abc -I 2.1 -o mcl_gene_clusters_drosophila3_clusters_v1.abc -te 8
+#TIME-Wed Aug  2 09:37:17 2023
+# fasta file contains 28329 records
+#TIME-Wed Aug  2 09:37:17 2023
+N_seqs	34	1
+N_seqs	29	1
+N_seqs	24	1
+N_seqs	23	4
+N_seqs	22	1
+N_seqs	21	2
+N_seqs	20	1
+N_seqs	19	1
+N_seqs	18	3
+N_seqs	17	4
+N_seqs	16	2
+N_seqs	15	5
+N_seqs	14	4
+N_seqs	13	8
+N_seqs	12	8
+N_seqs	11	13
+N_seqs	10	22
+N_seqs	9	16
+N_seqs	8	35
+N_seqs	7	29
+N_seqs	6	112
+N_seqs	5	95
+N_seqs	4	348
+N_seqs	3	347
+N_seqs	2	8920
+N_seqs	1	1
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-1	34	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-2	29	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-3	24	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-4	23	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-5	23	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-6	23	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-7	23	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-8	22	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-9	21	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-10	21	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-11	20	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-12	19	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-13	18	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-14	18	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-15	18	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-16	17	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-17	17	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-18	17	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-19	17	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-20	16	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-21	16	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-22	15	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-23	15	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-24	15	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-25	15	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-26	15	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-27	14	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-28	14	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-29	14	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-30	14	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-31	13	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-32	13	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-33	13	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-34	13	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-35	13	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-36	13	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-37	13	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-38	13	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-39	12	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-40	12	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-41	12	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-42	12	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-43	12	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-44	12	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-45	12	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-46	12	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-47	11	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-48	11	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-49	11	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-50	11	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-51	11	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-52	11	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-53	11	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-54	11	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-55	11	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-56	11	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-57	11	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-58	11	removed
+#TIME-Wed Aug  2 09:37:17 2023
+LARGE-59	11	removed
+#TIME-Wed Aug  2 09:37:18 2023
+F_clust	total-clusters: total number of clusters	9984
+F_clust	seq_under_max_len: total sequences shorter than length cutoff 15000	23173
+F_clust	max_sequences: clusters with fewer than 10 sequences	9922
+F_clust	min_taxa: clusters with more than 2 taxa	9867
+F_clust	taxa_mean: clusters with fewer than 9 seqs per taxon	9867
+F_clust	single_copy_gene: clusters of a single copy ortholog	8918
+F_clust	paralogous_gene: clusters with more than one copy in any taxon	949
+F_clust	single_species: cluster has only one taxon	55
+#TIME-Wed Aug  2 09:37:18 2023
+# found 2 total taxa
+#TIME-Wed Aug  2 09:37:18 2023
+N_genes	Dmel6	11018
+N_genes	DpseMV25	11245
+#TIME-Wed Aug  2 09:37:18 2023
+N_ortho	Dmel6	8918
+N_ortho	DpseMV25	8918
+#TIME-Wed Aug  2 09:37:18 2023
+N_taxa	2	9867
+N_taxa	1	55
+#TIME-Wed Aug  2 09:37:18 2023
+#TIME-Process completed in 0.1 minutes
+## Great success!!:  Wed Aug  2 09:37:18 2023

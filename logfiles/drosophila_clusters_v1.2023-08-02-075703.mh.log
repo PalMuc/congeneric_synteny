@@ -1,0 +1,167 @@
+#TIME-Wed Aug  2 07:57:03 2023
+/home/wrf/git/sequences/makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DereRS2.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_003286155.1_DereRS2_protein.x.n.faa -p 234 -o drosophila_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 07:57:03 2023
+# Using Python version: 3.8.10
+#TIME-Wed Aug  2 07:57:03 2023
+# /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DereRS2.renamed.blastp.tab input file detected
+#TIME-Wed Aug  2 07:57:03 2023
+# /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_003286155.1_DereRS2_protein.x.n.faa used as fasta database
+#TIME-Wed Aug  2 07:57:04 2023
+# Counted 27704 total proteins for 2 species  Wed Aug  2 07:57:04 2023
+#TIME-Wed Aug  2 07:57:04 2023
+T_genes	DereRS2	13718
+T_genes	Dmel6	13986
+#TIME-Wed Aug  2 07:57:04 2023
+N_bhits	DereRS2	13160
+N_bhits	Dmel6	13304
+#TIME-Wed Aug  2 07:57:04 2023
+# Counting nodes in subgraphs
+#TIME-Wed Aug  2 07:57:04 2023
+# Found 26464 subgraphs, pruning small subgraphs (0 nodes)
+#TIME-Wed Aug  2 07:57:04 2023
+F_edge	all	58806
+F_edge	non-self	58806
+F_edge	passed-min-overlap	56016
+F_edge	passed-max-overlap	52889
+F_edge	passed-bitscore	21704
+F_edge	retained-edges	21704
+#TIME-Wed Aug  2 07:57:04 2023
+N_nodes	nodes	26464
+N_nodes	filtered-nodes	26464
+#TIME-Wed Aug  2 07:57:04 2023
+#CMD  mcl allvall_edges_drosophila_clusters_v1.abc --abc -I 2.1 -o mcl_gene_clusters_drosophila_clusters_v1.abc -te 8
+#TIME-Wed Aug  2 07:57:06 2023
+# fasta file contains 27704 records
+#TIME-Wed Aug  2 07:57:06 2023
+N_seqs	28	1
+N_seqs	24	2
+N_seqs	23	3
+N_seqs	22	1
+N_seqs	21	2
+N_seqs	20	2
+N_seqs	17	1
+N_seqs	15	5
+N_seqs	14	3
+N_seqs	13	4
+N_seqs	12	8
+N_seqs	11	12
+N_seqs	10	20
+N_seqs	9	17
+N_seqs	8	28
+N_seqs	7	20
+N_seqs	6	93
+N_seqs	5	41
+N_seqs	4	304
+N_seqs	3	185
+N_seqs	2	11275
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-1	28	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-2	24	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-3	24	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-4	23	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-5	23	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-6	23	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-7	22	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-8	21	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-9	21	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-10	20	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-11	20	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-12	17	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-13	15	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-14	15	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-15	15	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-16	15	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-17	15	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-18	14	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-19	14	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-20	14	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-21	13	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-22	13	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-23	13	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-24	13	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-25	12	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-26	12	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-27	12	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-28	12	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-29	12	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-30	12	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-31	12	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-32	12	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-33	11	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-34	11	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-35	11	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-36	11	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-37	11	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-38	11	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-39	11	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-40	11	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-41	11	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-42	11	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-43	11	removed
+#TIME-Wed Aug  2 07:57:06 2023
+LARGE-44	11	removed
+#TIME-Wed Aug  2 07:57:07 2023
+F_clust	total-clusters: total number of clusters	12027
+F_clust	seq_under_max_len: total sequences shorter than length cutoff 15000	26459
+F_clust	max_sequences: clusters with fewer than 10 sequences	11981
+F_clust	min_taxa: clusters with more than 2 taxa	11919
+F_clust	taxa_mean: clusters with fewer than 9 seqs per taxon	11919
+F_clust	single_copy_gene: clusters of a single copy ortholog	11270
+F_clust	paralogous_gene: clusters with more than one copy in any taxon	649
+F_clust	single_species: cluster has only one taxon	62
+#TIME-Wed Aug  2 07:57:07 2023
+# found 2 total taxa
+#TIME-Wed Aug  2 07:57:07 2023
+N_genes	DereRS2	12890
+N_genes	Dmel6	12906
+#TIME-Wed Aug  2 07:57:07 2023
+N_ortho	DereRS2	11270
+N_ortho	Dmel6	11270
+#TIME-Wed Aug  2 07:57:07 2023
+N_taxa	2	11919
+N_taxa	1	62
+#TIME-Wed Aug  2 07:57:07 2023
+#TIME-Process completed in 0.1 minutes
+## Great success!!:  Wed Aug  2 07:57:07 2023

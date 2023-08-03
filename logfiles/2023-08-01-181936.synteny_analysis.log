@@ -1,0 +1,1090 @@
+#TIME-Tue Aug  1 18:19:36 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g perca/GCF_004354835.1_PFLA_1.0_genomic.gff.gz -p perca/GCF_004354835.1_PFLA_1.0_protein.faa.gz -f perca/GCF_004354835.1_PFLA_1.0_genomic.x.gff -o perca/GCF_004354835.1_PFLA_1.0_protein.x.faa
+#TIME-Tue Aug  1 18:19:45 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g perca/GCF_010015445.1_GENO_Pfluv_1.0_genomic.gff.gz -p perca/GCF_010015445.1_GENO_Pfluv_1.0_protein.faa.gz -f perca/GCF_010015445.1_GENO_Pfluv_1.0_genomic.x.gff -o perca/GCF_010015445.1_GENO_Pfluv_1.0_protein.x.faa
+#TIME-Tue Aug  1 18:19:56 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/perca/GCF_010015445.1_GENO_Pfluv_1.0_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/perca/GCF_010015445.1_GENO_Pfluv_1.0_protein.x.faa
+#TIME-Tue Aug  1 18:19:57 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/perca/GCF_004354835.1_PFLA_1.0_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/perca/GCF_010015445.1_GENO_Pfluv_1.0_protein.x.faa -o perca/PFLA1_vs_Pfluv1.blastp.tab
+#TIME-Tue Aug  1 18:20:12 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/perca/PFLA1_vs_Pfluv1.blastp.tab -q perca/GCF_004354835.1_PFLA_1.0_genomic.gff.gz -f perca/GCF_004354835.1_PFLA_1.0_genomic.fna.gz -d perca/GCF_010015445.1_GENO_Pfluv_1.0_genomic.gff.gz -F perca/GCF_010015445.1_GENO_Pfluv_1.0_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Tue Aug  1 18:20:50 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/perca/PFLA1_vs_Pfluv1.scaffold_synteny.tab Perca.flavescens Perca.fluviatilis 130
+#TIME-Tue Aug  1 18:21:12 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/perca/PFLA1_vs_Pfluv1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/perca/GCF_004354835.1_PFLA_1.0_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/perca/GCF_010015445.1_GENO_Pfluv_1.0_genomic.x.gff --genbank-gff -z 182880 -T -s 4
+#TIME-Tue Aug  1 18:21:17 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/perca/PFLA1_vs_Pfluv1.microsynteny.tab 0.51
+#TIME-Tue Aug  1 18:21:27 2023
+fastarenamer.py -p PFLA1 -j | /mnt/data/project/speciation-synteny/datasets/perca/GCF_004354835.1_PFLA_1.0_protein.x.faa
+#TIME-Tue Aug  1 18:21:27 2023
+fastarenamer.py -p Pfluv1 -j | /mnt/data/project/speciation-synteny/datasets/perca/GCF_010015445.1_GENO_Pfluv_1.0_protein.x.faa
+#TIME-Tue Aug  1 18:21:27 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/perca/GCF_010015445.1_GENO_Pfluv_1.0_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/perca/GCF_010015445.1_GENO_Pfluv_1.0_protein.x.n.faa
+#TIME-Tue Aug  1 18:21:27 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/perca/GCF_004354835.1_PFLA_1.0_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/perca/GCF_010015445.1_GENO_Pfluv_1.0_protein.x.n.faa -o perca/PFLA1_vs_Pfluv1.renamed.blastp.tab
+#TIME-Tue Aug  1 18:21:43 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/perca/PFLA1_vs_Pfluv1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/perca/GCF_004354835.1_PFLA_1.0_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/perca/GCF_010015445.1_GENO_Pfluv_1.0_protein.x.n.faa -p 234 -o perca_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Tue Aug  1 18:21:49 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Tue Aug  1 19:26:31 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_perca_clusters_v1/homologs_perca_clusters_v1_14403.fasta
+#TIME-Tue Aug  1 19:26:31 2023
+# INFORMATION: aligned 12650 pairs with MAFFT
+#TIME-Tue Aug  1 19:26:31 2023
+# INFORMATION: Pairwise identities for 12650 pairs
+#TIME-Tue Aug  1 19:26:31 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g bufo/GCF_014858855.1_ASM1485885v1_genomic.gff.gz -p bufo/GCF_014858855.1_ASM1485885v1_protein.faa.gz -f bufo/GCF_014858855.1_ASM1485885v1_genomic.x.gff -o bufo/GCF_014858855.1_ASM1485885v1_protein.x.faa
+#TIME-Tue Aug  1 19:26:38 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g bufo/GCF_905171765.1_aBufBuf1.1_genomic.gff.gz -p bufo/GCF_905171765.1_aBufBuf1.1_protein.faa.gz -f bufo/GCF_905171765.1_aBufBuf1.1_genomic.x.gff -o bufo/GCF_905171765.1_aBufBuf1.1_protein.x.faa
+#TIME-Tue Aug  1 19:26:46 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.faa
+#TIME-Tue Aug  1 19:26:46 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/bufo/GCF_014858855.1_ASM1485885v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.faa -o bufo/Bgarg_vs_aBufBuf1.blastp.tab
+#TIME-Tue Aug  1 19:27:00 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/bufo/Bgarg_vs_aBufBuf1.blastp.tab -q bufo/GCF_014858855.1_ASM1485885v1_genomic.gff.gz -f bufo/GCF_014858855.1_ASM1485885v1_genomic.fna.gz -d bufo/GCF_905171765.1_aBufBuf1.1_genomic.gff.gz -F bufo/GCF_905171765.1_aBufBuf1.1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Tue Aug  1 19:29:05 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/bufo/Bgarg_vs_aBufBuf1.scaffold_synteny.tab Bufo.gargarizans Bufo.bufo 216
+#TIME-Tue Aug  1 19:30:59 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/bufo/Bgarg_vs_aBufBuf1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/bufo/GCF_014858855.1_ASM1485885v1_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_genomic.x.gff --genbank-gff -z 959022 -T -s 4
+#TIME-Tue Aug  1 19:31:05 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/bufo/Bgarg_vs_aBufBuf1.microsynteny.tab 0.85
+#TIME-Tue Aug  1 19:31:20 2023
+fastarenamer.py -p Bgarg -j | /mnt/data/project/speciation-synteny/datasets/bufo/GCF_014858855.1_ASM1485885v1_protein.x.faa
+#TIME-Tue Aug  1 19:31:20 2023
+fastarenamer.py -p aBufBuf1 -j | /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.faa
+#TIME-Tue Aug  1 19:31:20 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.n.faa
+#TIME-Tue Aug  1 19:31:20 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/bufo/GCF_014858855.1_ASM1485885v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.n.faa -o bufo/Bgarg_vs_aBufBuf1.renamed.blastp.tab
+#TIME-Tue Aug  1 19:31:34 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/bufo/Bgarg_vs_aBufBuf1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/bufo/GCF_014858855.1_ASM1485885v1_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/bufo/GCF_905171765.1_aBufBuf1.1_protein.x.n.faa -p 234 -o bufo_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Tue Aug  1 19:31:40 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Tue Aug  1 20:29:52 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_bufo_clusters_v1/homologs_bufo_clusters_v1_07137.fasta
+#TIME-Tue Aug  1 20:29:52 2023
+# INFORMATION: aligned 11343 pairs with MAFFT
+#TIME-Tue Aug  1 20:29:52 2023
+# INFORMATION: Pairwise identities for 11343 pairs
+#TIME-Tue Aug  1 20:29:52 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g cervus/GCF_019320065.1_ASM1932006v1_genomic.gff.gz -p cervus/GCF_019320065.1_ASM1932006v1_protein.faa.gz -f cervus/GCF_019320065.1_ASM1932006v1_genomic.x.gff -o cervus/GCF_019320065.1_ASM1932006v1_protein.x.faa
+#TIME-Tue Aug  1 20:30:03 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g cervus/GCF_910594005.1_mCerEla1.1_genomic.gff.gz -p cervus/GCF_910594005.1_mCerEla1.1_protein.faa.gz -f cervus/GCF_910594005.1_mCerEla1.1_genomic.x.gff -o cervus/GCF_910594005.1_mCerEla1.1_protein.x.faa
+#TIME-Tue Aug  1 20:30:14 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.faa
+#TIME-Tue Aug  1 20:30:14 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/cervus/GCF_019320065.1_ASM1932006v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.faa -o cervus/Ccan_vs_mCerEla1.blastp.tab
+#TIME-Tue Aug  1 20:30:29 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/cervus/Ccan_vs_mCerEla1.blastp.tab -q cervus/GCF_019320065.1_ASM1932006v1_genomic.gff.gz -f cervus/GCF_019320065.1_ASM1932006v1_genomic.fna.gz -d cervus/GCF_910594005.1_mCerEla1.1_genomic.gff.gz -F cervus/GCF_910594005.1_mCerEla1.1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Tue Aug  1 20:31:54 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/cervus/Ccan_vs_mCerEla1.scaffold_synteny.tab Cervus.canadensis Cervus.elaphus 53
+#TIME-Tue Aug  1 20:32:58 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/cervus/Ccan_vs_mCerEla1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/cervus/GCF_019320065.1_ASM1932006v1_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_genomic.x.gff --genbank-gff -z 541321 -T -s 4
+#TIME-Tue Aug  1 20:33:02 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/cervus/Ccan_vs_mCerEla1.microsynteny.tab 0.21
+#TIME-Tue Aug  1 20:33:11 2023
+fastarenamer.py -p Ccan -j | /mnt/data/project/speciation-synteny/datasets/cervus/GCF_019320065.1_ASM1932006v1_protein.x.faa
+#TIME-Tue Aug  1 20:33:11 2023
+fastarenamer.py -p mCerEla1 -j | /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.faa
+#TIME-Tue Aug  1 20:33:11 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.n.faa
+#TIME-Tue Aug  1 20:33:11 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/cervus/GCF_019320065.1_ASM1932006v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.n.faa -o cervus/Ccan_vs_mCerEla1.renamed.blastp.tab
+#TIME-Tue Aug  1 20:33:26 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/cervus/Ccan_vs_mCerEla1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/cervus/GCF_019320065.1_ASM1932006v1_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.n.faa -p 234 -o cervus_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Tue Aug  1 20:33:33 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Tue Aug  1 21:40:48 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_cervus_clusters_v1/homologs_cervus_clusters_v1_07077.fasta
+#TIME-Tue Aug  1 21:40:48 2023
+# INFORMATION: aligned 13308 pairs with MAFFT
+#TIME-Tue Aug  1 21:40:48 2023
+# INFORMATION: Pairwise identities for 13308 pairs
+#TIME-Tue Aug  1 21:40:48 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g mauremys/GCF_016161935.1_ASM1616193v1_genomic.gff.gz -p mauremys/GCF_016161935.1_ASM1616193v1_protein.faa.gz -f mauremys/GCF_016161935.1_ASM1616193v1_genomic.x.gff -o mauremys/GCF_016161935.1_ASM1616193v1_protein.x.faa
+#TIME-Tue Aug  1 21:41:01 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g mauremys/GCF_020497125.1_ASM2049712v1_genomic.gff.gz -p mauremys/GCF_020497125.1_ASM2049712v1_protein.faa.gz -f mauremys/GCF_020497125.1_ASM2049712v1_genomic.x.gff -o mauremys/GCF_020497125.1_ASM2049712v1_protein.x.faa
+#TIME-Tue Aug  1 21:41:11 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_020497125.1_ASM2049712v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_020497125.1_ASM2049712v1_protein.x.faa
+#TIME-Tue Aug  1 21:41:11 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_016161935.1_ASM1616193v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_020497125.1_ASM2049712v1_protein.x.faa -o mauremys/Mreeves_vs_Mmutica.blastp.tab
+#TIME-Tue Aug  1 21:41:29 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/mauremys/Mreeves_vs_Mmutica.blastp.tab -q mauremys/GCF_016161935.1_ASM1616193v1_genomic.gff.gz -f mauremys/GCF_016161935.1_ASM1616193v1_genomic.fna.gz -d mauremys/GCF_020497125.1_ASM2049712v1_genomic.gff.gz -F mauremys/GCF_020497125.1_ASM2049712v1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Tue Aug  1 21:42:48 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/mauremys/Mreeves_vs_Mmutica.scaffold_synteny.tab Mauremys.reevesii Mauremys.mutica 63
+#TIME-Tue Aug  1 21:43:45 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/mauremys/Mreeves_vs_Mmutica.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_016161935.1_ASM1616193v1_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_020497125.1_ASM2049712v1_genomic.x.gff --genbank-gff -z 485197 -T -s 4
+#TIME-Tue Aug  1 21:43:51 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/mauremys/Mreeves_vs_Mmutica.microsynteny.tab 0.25
+#TIME-Tue Aug  1 21:44:01 2023
+fastarenamer.py -p Mreeves -j | /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_016161935.1_ASM1616193v1_protein.x.faa
+#TIME-Tue Aug  1 21:44:01 2023
+fastarenamer.py -p Mmutica -j | /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_020497125.1_ASM2049712v1_protein.x.faa
+#TIME-Tue Aug  1 21:44:01 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_020497125.1_ASM2049712v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_020497125.1_ASM2049712v1_protein.x.n.faa
+#TIME-Tue Aug  1 21:44:01 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_016161935.1_ASM1616193v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_020497125.1_ASM2049712v1_protein.x.n.faa -o mauremys/Mreeves_vs_Mmutica.renamed.blastp.tab
+#TIME-Tue Aug  1 21:44:21 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/mauremys/Mreeves_vs_Mmutica.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_016161935.1_ASM1616193v1_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/mauremys/GCF_020497125.1_ASM2049712v1_protein.x.n.faa -p 234 -o mauremys_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Tue Aug  1 21:44:27 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Tue Aug  1 22:45:43 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_mauremys_clusters_v1/homologs_mauremys_clusters_v1_09294.fasta
+#TIME-Tue Aug  1 22:45:43 2023
+# INFORMATION: aligned 12155 pairs with MAFFT
+#TIME-Tue Aug  1 22:45:43 2023
+# INFORMATION: Pairwise identities for 12155 pairs
+#TIME-Tue Aug  1 22:45:43 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_genomic.gff.gz -p epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_protein.faa.gz -f epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_genomic.x.gff -o epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_protein.x.faa
+#TIME-Tue Aug  1 22:45:52 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g epinephelus/GCF_005281545.1_ASM528154v1_genomic.gff.gz -p epinephelus/GCF_005281545.1_ASM528154v1_protein.faa.gz -f epinephelus/GCF_005281545.1_ASM528154v1_genomic.x.gff -o epinephelus/GCF_005281545.1_ASM528154v1_protein.x.faa
+#TIME-Tue Aug  1 22:46:01 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_005281545.1_ASM528154v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_005281545.1_ASM528154v1_protein.x.faa
+#TIME-Tue Aug  1 22:46:01 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_005281545.1_ASM528154v1_protein.x.faa -o epinephelus/Efusco_vs_Elanceo.blastp.tab
+#TIME-Tue Aug  1 22:46:18 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/epinephelus/Efusco_vs_Elanceo.blastp.tab -q epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_genomic.gff.gz -f epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_genomic.fna.gz -d epinephelus/GCF_005281545.1_ASM528154v1_genomic.gff.gz -F epinephelus/GCF_005281545.1_ASM528154v1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Tue Aug  1 22:46:58 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/epinephelus/Efusco_vs_Elanceo.scaffold_synteny.tab Epinephelus.fuscoguttatus Ephinephelus.lanceolatus 25
+#TIME-Tue Aug  1 22:47:24 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/epinephelus/Efusco_vs_Elanceo.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_005281545.1_ASM528154v1_genomic.x.gff --genbank-gff -z 213442 -T -s 4
+#TIME-Tue Aug  1 22:47:30 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/epinephelus/Efusco_vs_Elanceo.microsynteny.tab 0.1
+#TIME-Tue Aug  1 22:47:38 2023
+fastarenamer.py -p Efusco -j | /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_protein.x.faa
+#TIME-Tue Aug  1 22:47:38 2023
+fastarenamer.py -p Elanceo -j | /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_005281545.1_ASM528154v1_protein.x.faa
+#TIME-Tue Aug  1 22:47:38 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_005281545.1_ASM528154v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_005281545.1_ASM528154v1_protein.x.n.faa
+#TIME-Tue Aug  1 22:47:39 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_005281545.1_ASM528154v1_protein.x.n.faa -o epinephelus/Efusco_vs_Elanceo.renamed.blastp.tab
+#TIME-Tue Aug  1 22:47:55 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/epinephelus/Efusco_vs_Elanceo.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_005281545.1_ASM528154v1_protein.x.n.faa -p 234 -o epinephelus_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Tue Aug  1 22:48:02 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Tue Aug  1 23:54:34 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_epinephelus_clusters_v1/homologs_epinephelus_clusters_v1_05813.fasta
+#TIME-Tue Aug  1 23:54:34 2023
+# INFORMATION: aligned 13274 pairs with MAFFT
+#TIME-Tue Aug  1 23:54:34 2023
+# INFORMATION: Pairwise identities for 13274 pairs
+#TIME-Tue Aug  1 23:54:34 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g oreochromis/GCF_013358895.1_ZZ_aureus_genomic.gff.gz -p oreochromis/GCF_013358895.1_ZZ_aureus_protein.faa.gz -f oreochromis/GCF_013358895.1_ZZ_aureus_genomic.x.gff -o oreochromis/GCF_013358895.1_ZZ_aureus_protein.x.faa
+#TIME-Tue Aug  1 23:54:43 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_genomic.gff.gz -p oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_protein.faa.gz -f oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_genomic.x.gff -o oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_protein.x.faa
+#TIME-Tue Aug  1 23:54:56 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_protein.x.faa
+#TIME-Tue Aug  1 23:54:56 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_013358895.1_ZZ_aureus_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_protein.x.faa -o oreochromis/OaurZZ_vs_OnilUMD.blastp.tab
+#TIME-Tue Aug  1 23:55:19 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/oreochromis/OaurZZ_vs_OnilUMD.blastp.tab -q oreochromis/GCF_013358895.1_ZZ_aureus_genomic.gff.gz -f oreochromis/GCF_013358895.1_ZZ_aureus_genomic.fna.gz -d oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_genomic.gff.gz -F oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Tue Aug  1 23:56:00 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/oreochromis/OaurZZ_vs_OnilUMD.scaffold_synteny.tab Oreochromis.aureus Oreochromis.niloticus 10
+#TIME-Tue Aug  1 23:56:25 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/oreochromis/OaurZZ_vs_OnilUMD.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_013358895.1_ZZ_aureus_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_genomic.x.gff --genbank-gff -z 201125 -T -s 4
+#TIME-Tue Aug  1 23:56:34 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/oreochromis/OaurZZ_vs_OnilUMD.microsynteny.tab 0.04
+#TIME-Tue Aug  1 23:56:48 2023
+fastarenamer.py -p OaurZZ -j | /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_013358895.1_ZZ_aureus_protein.x.faa
+#TIME-Tue Aug  1 23:56:48 2023
+fastarenamer.py -p OnilUMD -j | /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_protein.x.faa
+#TIME-Tue Aug  1 23:56:48 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_protein.x.n.faa
+#TIME-Tue Aug  1 23:56:49 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_013358895.1_ZZ_aureus_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_protein.x.n.faa -o oreochromis/OaurZZ_vs_OnilUMD.renamed.blastp.tab
+#TIME-Tue Aug  1 23:57:11 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/oreochromis/OaurZZ_vs_OnilUMD.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_013358895.1_ZZ_aureus_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/oreochromis/GCF_001858045.2_O_niloticus_UMD_NMBU_protein.x.n.faa -p 234 -o oreochromis_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Tue Aug  1 23:57:19 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 01:04:15 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_oreochromis_clusters_v1/homologs_oreochromis_clusters_v1_12074.fasta
+#TIME-Wed Aug  2 01:04:15 2023
+# INFORMATION: aligned 13322 pairs with MAFFT
+#TIME-Wed Aug  2 01:04:15 2023
+# INFORMATION: Pairwise identities for 13322 pairs
+#TIME-Wed Aug  2 01:04:15 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g thunnus/GCF_914725855.1_fThuAlb1.1_genomic.gff.gz -p thunnus/GCF_914725855.1_fThuAlb1.1_protein.faa.gz -f thunnus/GCF_914725855.1_fThuAlb1.1_genomic.x.gff -o thunnus/GCF_914725855.1_fThuAlb1.1_protein.x.faa
+#TIME-Wed Aug  2 01:04:26 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g thunnus/GCF_910596095.1_fThuMac1.1_genomic.gff.gz -p thunnus/GCF_910596095.1_fThuMac1.1_protein.faa.gz -f thunnus/GCF_910596095.1_fThuMac1.1_genomic.x.gff -o thunnus/GCF_910596095.1_fThuMac1.1_protein.x.faa
+#TIME-Wed Aug  2 01:04:36 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.faa
+#TIME-Wed Aug  2 01:04:36 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_914725855.1_fThuAlb1.1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.faa -o thunnus/fThuAlb1_vs_fThuMac1.blastp.tab
+#TIME-Wed Aug  2 01:04:55 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/thunnus/fThuAlb1_vs_fThuMac1.blastp.tab -q thunnus/GCF_914725855.1_fThuAlb1.1_genomic.gff.gz -f thunnus/GCF_914725855.1_fThuAlb1.1_genomic.fna.gz -d thunnus/GCF_910596095.1_fThuMac1.1_genomic.gff.gz -F thunnus/GCF_910596095.1_fThuMac1.1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 01:05:30 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/thunnus/fThuAlb1_vs_fThuMac1.scaffold_synteny.tab Thunnus.albacares Thunnus.maccoyii 153
+#TIME-Wed Aug  2 01:05:49 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/thunnus/fThuAlb1_vs_fThuMac1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_914725855.1_fThuAlb1.1_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_genomic.x.gff --genbank-gff -z 157452 -T -s 4
+#TIME-Wed Aug  2 01:05:55 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/thunnus/fThuAlb1_vs_fThuMac1.microsynteny.tab 0.60
+#TIME-Wed Aug  2 01:06:02 2023
+fastarenamer.py -p fThuAlb1 -j | /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_914725855.1_fThuAlb1.1_protein.x.faa
+#TIME-Wed Aug  2 01:06:02 2023
+fastarenamer.py -p fThuMac1 -j | /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.faa
+#TIME-Wed Aug  2 01:06:02 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.n.faa
+#TIME-Wed Aug  2 01:06:03 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_914725855.1_fThuAlb1.1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.n.faa -o thunnus/fThuAlb1_vs_fThuMac1.renamed.blastp.tab
+#TIME-Wed Aug  2 01:06:24 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/thunnus/fThuAlb1_vs_fThuMac1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_914725855.1_fThuAlb1.1_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/thunnus/GCF_910596095.1_fThuMac1.1_protein.x.n.faa -p 234 -o thunnus_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 01:06:31 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 02:14:46 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_thunnus_clusters_v1/homologs_thunnus_clusters_v1_07171.fasta
+#TIME-Wed Aug  2 02:14:46 2023
+# INFORMATION: aligned 13593 pairs with MAFFT
+#TIME-Wed Aug  2 02:14:46 2023
+# INFORMATION: Pairwise identities for 13593 pairs
+#TIME-Wed Aug  2 02:14:46 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g lytechinus/GCF_018143015.1_Lvar_3.0_genomic.gff.gz -p lytechinus/GCF_018143015.1_Lvar_3.0_protein.faa.gz -f lytechinus/GCF_018143015.1_Lvar_3.0_genomic.x.gff -o lytechinus/GCF_018143015.1_Lvar_3.0_protein.x.faa
+#TIME-Wed Aug  2 02:14:52 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_genomic.gff.gz -p lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_protein.faa.gz -f lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_genomic.x.gff -o lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_protein.x.faa
+#TIME-Wed Aug  2 02:14:58 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_protein.x.faa
+#TIME-Wed Aug  2 02:14:58 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_018143015.1_Lvar_3.0_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_protein.x.faa -o lytechinus/Lvar3_vs_Lpic2.blastp.tab
+#TIME-Wed Aug  2 02:15:12 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/lytechinus/Lvar3_vs_Lpic2.blastp.tab -q lytechinus/GCF_018143015.1_Lvar_3.0_genomic.gff.gz -f lytechinus/GCF_018143015.1_Lvar_3.0_genomic.fna.gz -d lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_genomic.gff.gz -F lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 02:15:44 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/lytechinus/Lvar3_vs_Lpic2.scaffold_synteny.tab Lytechinus.variegatus Lytechinus.picta 102
+#TIME-Wed Aug  2 02:16:07 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/lytechinus/Lvar3_vs_Lpic2.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_018143015.1_Lvar_3.0_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_genomic.x.gff --genbank-gff -z 186906 -T -s 4
+#TIME-Wed Aug  2 02:16:13 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/lytechinus/Lvar3_vs_Lpic2.microsynteny.tab 0.40
+#TIME-Wed Aug  2 02:16:25 2023
+fastarenamer.py -p Lvar3 -j | /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_018143015.1_Lvar_3.0_protein.x.faa
+#TIME-Wed Aug  2 02:16:25 2023
+fastarenamer.py -p Lpic2 -j | /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_protein.x.faa
+#TIME-Wed Aug  2 02:16:25 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_protein.x.n.faa
+#TIME-Wed Aug  2 02:16:26 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_018143015.1_Lvar_3.0_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_protein.x.n.faa -o lytechinus/Lvar3_vs_Lpic2.renamed.blastp.tab
+#TIME-Wed Aug  2 02:16:39 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/lytechinus/Lvar3_vs_Lpic2.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_018143015.1_Lvar_3.0_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/lytechinus/GCF_015342785.2_UCSD_Lpic_2.1_protein.x.n.faa -p 234 -o lytechinus_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 02:16:44 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 02:55:03 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_lytechinus_clusters_v1/homologs_lytechinus_clusters_v1_12676.fasta
+#TIME-Wed Aug  2 02:55:03 2023
+# INFORMATION: aligned 7599 pairs with MAFFT
+#TIME-Wed Aug  2 02:55:03 2023
+# INFORMATION: Pairwise identities for 7599 pairs
+#TIME-Wed Aug  2 02:55:03 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g octopus/GCF_001194135.2_ASM119413v2_genomic.gff.gz -p octopus/GCF_001194135.2_ASM119413v2_protein.faa.gz -f octopus/GCF_001194135.2_ASM119413v2_genomic.x.gff -o octopus/GCF_001194135.2_ASM119413v2_protein.x.faa
+#TIME-Wed Aug  2 02:55:08 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g octopus/GCF_006345805.1_ASM634580v1_genomic.gff.gz -p octopus/GCF_006345805.1_ASM634580v1_protein.faa.gz -f octopus/GCF_006345805.1_ASM634580v1_genomic.x.gff -o octopus/GCF_006345805.1_ASM634580v1_protein.x.faa
+#TIME-Wed Aug  2 02:55:14 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.faa
+#TIME-Wed Aug  2 02:55:14 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/octopus/GCF_001194135.2_ASM119413v2_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.faa -o octopus/Obi_vs_Osi.blastp.tab
+#TIME-Wed Aug  2 02:55:21 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/octopus/Obi_vs_Osi.blastp.tab -q octopus/GCF_001194135.2_ASM119413v2_genomic.gff.gz -f octopus/GCF_001194135.2_ASM119413v2_genomic.fna.gz -d octopus/GCF_006345805.1_ASM634580v1_genomic.gff.gz -F octopus/GCF_006345805.1_ASM634580v1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 02:56:31 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/octopus/Obi_vs_Osi.scaffold_synteny.tab Octopus.bimaculoides Octopus.sinensis 198
+#TIME-Wed Aug  2 02:57:31 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/octopus/Obi_vs_Osi.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/octopus/GCF_001194135.2_ASM119413v2_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_genomic.x.gff --genbank-gff -z 506168 -T -s 4
+#TIME-Wed Aug  2 02:57:33 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/octopus/Obi_vs_Osi.microsynteny.tab 0.78
+#TIME-Wed Aug  2 02:57:40 2023
+fastarenamer.py -p Obi -j | /mnt/data/project/speciation-synteny/datasets/octopus/GCF_001194135.2_ASM119413v2_protein.x.faa
+#TIME-Wed Aug  2 02:57:40 2023
+fastarenamer.py -p Osi -j | /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.faa
+#TIME-Wed Aug  2 02:57:40 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.n.faa
+#TIME-Wed Aug  2 02:57:41 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/octopus/GCF_001194135.2_ASM119413v2_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.n.faa -o octopus/Obi_vs_Osi.renamed.blastp.tab
+#TIME-Wed Aug  2 02:57:47 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/octopus/Obi_vs_Osi.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/octopus/GCF_001194135.2_ASM119413v2_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/octopus/GCF_006345805.1_ASM634580v1_protein.x.n.faa -p 234 -o octopus_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 02:57:51 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 03:47:23 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_octopus_clusters_v1/homologs_octopus_clusters_v1_08695.fasta
+#TIME-Wed Aug  2 03:47:23 2023
+# INFORMATION: aligned 9871 pairs with MAFFT
+#TIME-Wed Aug  2 03:47:23 2023
+# INFORMATION: Pairwise identities for 9871 pairs
+#TIME-Wed Aug  2 03:47:23 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_genomic.gff.gz -p crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.faa.gz -f crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_genomic.x.gff -o crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.faa
+#TIME-Wed Aug  2 03:47:34 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g crassostrea/GCF_002022765.2_C_virginica-3.0_genomic.gff.gz -p crassostrea/GCF_002022765.2_C_virginica-3.0_protein.faa.gz -f crassostrea/GCF_002022765.2_C_virginica-3.0_genomic.x.gff -o crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.faa
+#TIME-Wed Aug  2 03:47:44 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.faa
+#TIME-Wed Aug  2 03:47:44 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.faa -o crassostrea/Cgig1_vs_Cvir3.blastp.tab
+#TIME-Wed Aug  2 03:48:04 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/crassostrea/Cgig1_vs_Cvir3.blastp.tab -q crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_genomic.gff.gz -f crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_genomic.fna.gz -d crassostrea/GCF_002022765.2_C_virginica-3.0_genomic.gff.gz -F crassostrea/GCF_002022765.2_C_virginica-3.0_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 03:48:38 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/crassostrea/Cgig1_vs_Cvir3.scaffold_synteny.tab Crassostrea.gigas Crassostrea.virginica 229
+#TIME-Wed Aug  2 03:48:55 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/crassostrea/Cgig1_vs_Cvir3.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_genomic.x.gff --genbank-gff -z 133262 -T -s 4
+#TIME-Wed Aug  2 03:49:08 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/crassostrea/Cgig1_vs_Cvir3.microsynteny.tab 0.9
+#TIME-Wed Aug  2 03:49:30 2023
+fastarenamer.py -p Cgig1 -j | /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.faa
+#TIME-Wed Aug  2 03:49:30 2023
+fastarenamer.py -p Cvir3 -j | /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.faa
+#TIME-Wed Aug  2 03:49:30 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.n.faa
+#TIME-Wed Aug  2 03:49:31 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.n.faa -o crassostrea/Cgig1_vs_Cvir3.renamed.blastp.tab
+#TIME-Wed Aug  2 03:49:51 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/crassostrea/Cgig1_vs_Cvir3.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.n.faa -p 234 -o crassostrea_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 03:49:58 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 04:32:14 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_crassostrea_clusters_v1/homologs_crassostrea_clusters_v1_07816.fasta
+#TIME-Wed Aug  2 04:32:14 2023
+# INFORMATION: aligned 8407 pairs with MAFFT
+#TIME-Wed Aug  2 04:32:14 2023
+# INFORMATION: Pairwise identities for 8407 pairs
+#TIME-Wed Aug  2 04:32:14 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g daphnia/GCF_021134715.1_ASM2113471v1_genomic.gff.gz -p daphnia/GCF_021134715.1_ASM2113471v1_protein.faa.gz -f daphnia/GCF_021134715.1_ASM2113471v1_genomic.x.gff -o daphnia/GCF_021134715.1_ASM2113471v1_protein.x.faa
+#TIME-Wed Aug  2 04:32:18 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g daphnia/GCF_020631705.1_ASM2063170v1.1_genomic.gff.gz -p daphnia/GCF_020631705.1_ASM2063170v1.1_protein.faa.gz -f daphnia/GCF_020631705.1_ASM2063170v1.1_genomic.x.gff -o daphnia/GCF_020631705.1_ASM2063170v1.1_protein.x.faa
+#TIME-Wed Aug  2 04:32:24 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_020631705.1_ASM2063170v1.1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_020631705.1_ASM2063170v1.1_protein.x.faa
+#TIME-Wed Aug  2 04:32:24 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_021134715.1_ASM2113471v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_020631705.1_ASM2063170v1.1_protein.x.faa -o daphnia/Dpul_vs_Dmag.blastp.tab
+#TIME-Wed Aug  2 04:32:30 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/daphnia/Dpul_vs_Dmag.blastp.tab -q daphnia/GCF_021134715.1_ASM2113471v1_genomic.gff.gz -f daphnia/GCF_021134715.1_ASM2113471v1_genomic.fna.gz -d daphnia/GCF_020631705.1_ASM2063170v1.1_genomic.gff.gz -F daphnia/GCF_020631705.1_ASM2063170v1.1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 04:32:41 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/daphnia/Dpul_vs_Dmag.scaffold_synteny.tab Daphnia.pulex Daphnia.magna 178
+#TIME-Wed Aug  2 04:32:45 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/daphnia/Dpul_vs_Dmag.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_021134715.1_ASM2113471v1_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_020631705.1_ASM2063170v1.1_genomic.x.gff --genbank-gff -z 29466 -T -s 4
+#TIME-Wed Aug  2 04:32:48 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/daphnia/Dpul_vs_Dmag.microsynteny.tab 0.70
+#TIME-Wed Aug  2 04:32:55 2023
+fastarenamer.py -p Dpul -j | /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_021134715.1_ASM2113471v1_protein.x.faa
+#TIME-Wed Aug  2 04:32:55 2023
+fastarenamer.py -p Dmag -j | /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_020631705.1_ASM2063170v1.1_protein.x.faa
+#TIME-Wed Aug  2 04:32:55 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_020631705.1_ASM2063170v1.1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_020631705.1_ASM2063170v1.1_protein.x.n.faa
+#TIME-Wed Aug  2 04:32:55 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_021134715.1_ASM2113471v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_020631705.1_ASM2063170v1.1_protein.x.n.faa -o daphnia/Dpul_vs_Dmag.renamed.blastp.tab
+#TIME-Wed Aug  2 04:33:02 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/daphnia/Dpul_vs_Dmag.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_021134715.1_ASM2113471v1_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/daphnia/GCF_020631705.1_ASM2063170v1.1_protein.x.n.faa -p 234 -o daphnia_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 04:33:05 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 05:09:34 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_daphnia_clusters_v1/homologs_daphnia_clusters_v1_3416.fasta
+#TIME-Wed Aug  2 05:09:34 2023
+# INFORMATION: aligned 7208 pairs with MAFFT
+#TIME-Wed Aug  2 05:09:34 2023
+# INFORMATION: Pairwise identities for 7208 pairs
+#TIME-Wed Aug  2 05:09:34 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g cervus/GCF_019320065.1_ASM1932006v1_genomic.gff.gz -p cervus/GCF_019320065.1_ASM1932006v1_protein.faa.gz -f cervus/GCF_019320065.1_ASM1932006v1_genomic.x.gff -o cervus/GCF_019320065.1_ASM1932006v1_protein.x.faa
+#TIME-Wed Aug  2 05:09:45 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g cervus/GCF_910594005.1_mCerEla1.1_genomic.gff.gz -p cervus/GCF_910594005.1_mCerEla1.1_protein.faa.gz -f cervus/GCF_910594005.1_mCerEla1.1_genomic.x.gff -o cervus/GCF_910594005.1_mCerEla1.1_protein.x.faa
+#TIME-Wed Aug  2 05:09:55 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.faa
+#TIME-Wed Aug  2 05:09:55 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/cervus/GCF_019320065.1_ASM1932006v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.faa -o cervus/Ccan_vs_mCerEla1.blastp.tab
+#TIME-Wed Aug  2 05:10:10 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/cervus/Ccan_vs_mCerEla1.blastp.tab -q cervus/GCF_019320065.1_ASM1932006v1_genomic.gff.gz -f cervus/GCF_019320065.1_ASM1932006v1_genomic.fna.gz -d cervus/GCF_910594005.1_mCerEla1.1_genomic.gff.gz -F cervus/GCF_910594005.1_mCerEla1.1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 05:11:32 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/cervus/Ccan_vs_mCerEla1.scaffold_synteny.tab Cervus.canadensis Cervus.elaphus 53
+#TIME-Wed Aug  2 05:12:36 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/cervus/Ccan_vs_mCerEla1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/cervus/GCF_019320065.1_ASM1932006v1_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_genomic.x.gff --genbank-gff -z 541321 -T -s 4
+#TIME-Wed Aug  2 05:12:40 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/cervus/Ccan_vs_mCerEla1.microsynteny.tab 0.21
+#TIME-Wed Aug  2 05:12:49 2023
+fastarenamer.py -p Ccan -j | /mnt/data/project/speciation-synteny/datasets/cervus/GCF_019320065.1_ASM1932006v1_protein.x.faa
+#TIME-Wed Aug  2 05:12:49 2023
+fastarenamer.py -p mCerEla1 -j | /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.faa
+#TIME-Wed Aug  2 05:12:49 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.n.faa
+#TIME-Wed Aug  2 05:12:50 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/cervus/GCF_019320065.1_ASM1932006v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.n.faa -o cervus/Ccan_vs_mCerEla1.renamed.blastp.tab
+#TIME-Wed Aug  2 05:13:04 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/cervus/Ccan_vs_mCerEla1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/cervus/GCF_019320065.1_ASM1932006v1_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/cervus/GCF_910594005.1_mCerEla1.1_protein.x.n.faa -p 234 -o cervus2_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 05:13:11 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 06:20:19 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_cervus2_clusters_v1/homologs_cervus2_clusters_v1_12222.fasta
+#TIME-Wed Aug  2 06:20:19 2023
+# INFORMATION: aligned 13308 pairs with MAFFT
+#TIME-Wed Aug  2 06:20:19 2023
+# INFORMATION: Pairwise identities for 13308 pairs
+#TIME-Wed Aug  2 06:20:19 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g anastrepha/GCF_027943255.1_idAnaObli1_1.0_genomic.gff.gz -p anastrepha/GCF_027943255.1_idAnaObli1_1.0_protein.faa.gz -f anastrepha/GCF_027943255.1_idAnaObli1_1.0_genomic.x.gff -o anastrepha/GCF_027943255.1_idAnaObli1_1.0_protein.x.faa
+#TIME-Wed Aug  2 06:20:21 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g anastrepha/GCF_028408465.1_idAnaLude1.1_genomic.gff.gz -p anastrepha/GCF_028408465.1_idAnaLude1.1_protein.faa.gz -f anastrepha/GCF_028408465.1_idAnaLude1.1_genomic.x.gff -o anastrepha/GCF_028408465.1_idAnaLude1.1_protein.x.faa
+#TIME-Wed Aug  2 06:20:25 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_028408465.1_idAnaLude1.1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_028408465.1_idAnaLude1.1_protein.x.faa
+#TIME-Wed Aug  2 06:20:25 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_027943255.1_idAnaObli1_1.0_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_028408465.1_idAnaLude1.1_protein.x.faa -o anastrepha/AnaObli1_vs_AnaLude1.blastp.tab
+#TIME-Wed Aug  2 06:20:32 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/anastrepha/AnaObli1_vs_AnaLude1.blastp.tab -q anastrepha/GCF_027943255.1_idAnaObli1_1.0_genomic.gff.gz -f anastrepha/GCF_027943255.1_idAnaObli1_1.0_genomic.fna.gz -d anastrepha/GCF_028408465.1_idAnaLude1.1_genomic.gff.gz -F anastrepha/GCF_028408465.1_idAnaLude1.1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 06:20:58 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/anastrepha/AnaObli1_vs_AnaLude1.scaffold_synteny.tab Anastrepha.obliqua Anastrepha.ludens 79
+#TIME-Wed Aug  2 06:21:19 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/anastrepha/AnaObli1_vs_AnaLude1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_027943255.1_idAnaObli1_1.0_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_028408465.1_idAnaLude1.1_genomic.x.gff --genbank-gff -z 165750 -T -s 4
+#TIME-Wed Aug  2 06:21:22 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/anastrepha/AnaObli1_vs_AnaLude1.microsynteny.tab 0.31
+#TIME-Wed Aug  2 06:21:26 2023
+fastarenamer.py -p AnaObli1 -j | /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_027943255.1_idAnaObli1_1.0_protein.x.faa
+#TIME-Wed Aug  2 06:21:26 2023
+fastarenamer.py -p AnaLude1 -j | /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_028408465.1_idAnaLude1.1_protein.x.faa
+#TIME-Wed Aug  2 06:21:27 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_028408465.1_idAnaLude1.1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_028408465.1_idAnaLude1.1_protein.x.n.faa
+#TIME-Wed Aug  2 06:21:27 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_027943255.1_idAnaObli1_1.0_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_028408465.1_idAnaLude1.1_protein.x.n.faa -o anastrepha/AnaObli1_vs_AnaLude1.renamed.blastp.tab
+#TIME-Wed Aug  2 06:21:34 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/anastrepha/AnaObli1_vs_AnaLude1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_027943255.1_idAnaObli1_1.0_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/anastrepha/GCF_028408465.1_idAnaLude1.1_protein.x.n.faa -p 234 -o anastrepha_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 06:21:38 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 07:11:23 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_anastrepha_clusters_v1/homologs_anastrepha_clusters_v1_08711.fasta
+#TIME-Wed Aug  2 07:11:23 2023
+# INFORMATION: aligned 9871 pairs with MAFFT
+#TIME-Wed Aug  2 07:11:23 2023
+# INFORMATION: Pairwise identities for 9871 pairs
+#TIME-Wed Aug  2 07:11:23 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g bombus/GCF_014825855.1_ASM1482585v1_genomic.gff.gz -p bombus/GCF_014825855.1_ASM1482585v1_protein.faa.gz -f bombus/GCF_014825855.1_ASM1482585v1_genomic.x.gff -o bombus/GCF_014825855.1_ASM1482585v1_protein.x.faa
+#TIME-Wed Aug  2 07:11:28 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g bombus/GCF_910591885.1_iyBomTerr1.2_genomic.gff.gz -p bombus/GCF_910591885.1_iyBomTerr1.2_protein.faa.gz -f bombus/GCF_910591885.1_iyBomTerr1.2_genomic.x.gff -o bombus/GCF_910591885.1_iyBomTerr1.2_protein.x.faa
+#TIME-Wed Aug  2 07:11:32 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/bombus/GCF_910591885.1_iyBomTerr1.2_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/bombus/GCF_910591885.1_iyBomTerr1.2_protein.x.faa
+#TIME-Wed Aug  2 07:11:32 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/bombus/GCF_014825855.1_ASM1482585v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/bombus/GCF_910591885.1_iyBomTerr1.2_protein.x.faa -o bombus/Bpyro_vs_iyBomTerr1.blastp.tab
+#TIME-Wed Aug  2 07:11:36 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/bombus/Bpyro_vs_iyBomTerr1.blastp.tab -q bombus/GCF_014825855.1_ASM1482585v1_genomic.gff.gz -f bombus/GCF_014825855.1_ASM1482585v1_genomic.fna.gz -d bombus/GCF_910591885.1_iyBomTerr1.2_genomic.gff.gz -F bombus/GCF_910591885.1_iyBomTerr1.2_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 07:11:50 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/bombus/Bpyro_vs_iyBomTerr1.scaffold_synteny.tab Bombus.pyrosoma Bombus.terrestris 2
+#TIME-Wed Aug  2 07:11:57 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/bombus/Bpyro_vs_iyBomTerr1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/bombus/GCF_014825855.1_ASM1482585v1_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/bombus/GCF_910591885.1_iyBomTerr1.2_genomic.x.gff --genbank-gff -z 64776 -T -s 4
+#TIME-Wed Aug  2 07:11:58 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/bombus/Bpyro_vs_iyBomTerr1.microsynteny.tab 0.01
+#TIME-Wed Aug  2 07:12:00 2023
+fastarenamer.py -p Bpyro -j | /mnt/data/project/speciation-synteny/datasets/bombus/GCF_014825855.1_ASM1482585v1_protein.x.faa
+#TIME-Wed Aug  2 07:12:00 2023
+fastarenamer.py -p iyBomTerr1 -j | /mnt/data/project/speciation-synteny/datasets/bombus/GCF_910591885.1_iyBomTerr1.2_protein.x.faa
+#TIME-Wed Aug  2 07:12:01 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/bombus/GCF_910591885.1_iyBomTerr1.2_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/bombus/GCF_910591885.1_iyBomTerr1.2_protein.x.n.faa
+#TIME-Wed Aug  2 07:12:01 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/bombus/GCF_014825855.1_ASM1482585v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/bombus/GCF_910591885.1_iyBomTerr1.2_protein.x.n.faa -o bombus/Bpyro_vs_iyBomTerr1.renamed.blastp.tab
+#TIME-Wed Aug  2 07:12:05 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/bombus/Bpyro_vs_iyBomTerr1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/bombus/GCF_014825855.1_ASM1482585v1_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/bombus/GCF_910591885.1_iyBomTerr1.2_protein.x.n.faa -p 234 -o bombus_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 07:12:08 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 07:56:28 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_bombus_clusters_v1/homologs_bombus_clusters_v1_2081.fasta
+#TIME-Wed Aug  2 07:56:28 2023
+# INFORMATION: aligned 8806 pairs with MAFFT
+#TIME-Wed Aug  2 07:56:28 2023
+# INFORMATION: Pairwise identities for 8806 pairs
+#TIME-Wed Aug  2 07:56:28 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -p drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.faa.gz -f drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -o drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 07:56:32 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g drosophila/GCF_003286155.1_DereRS2_genomic.gff.gz -p drosophila/GCF_003286155.1_DereRS2_protein.faa.gz -f drosophila/GCF_003286155.1_DereRS2_genomic.x.gff -o drosophila/GCF_003286155.1_DereRS2_protein.x.faa
+#TIME-Wed Aug  2 07:56:34 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_003286155.1_DereRS2_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_003286155.1_DereRS2_protein.x.faa
+#TIME-Wed Aug  2 07:56:34 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_003286155.1_DereRS2_protein.x.faa -o drosophila/Dmel6_vs_DereRS2.blastp.tab
+#TIME-Wed Aug  2 07:56:39 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DereRS2.blastp.tab -q drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -f drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna.gz -d drosophila/GCF_003286155.1_DereRS2_genomic.gff.gz -F drosophila/GCF_003286155.1_DereRS2_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 07:56:48 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DereRS2.scaffold_synteny.tab Drosophila.melanogaster Drosophila.erecta 40
+#TIME-Wed Aug  2 07:56:51 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DereRS2.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_003286155.1_DereRS2_genomic.x.gff --genbank-gff -z 29026 -T -s 4
+#TIME-Wed Aug  2 07:56:54 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DereRS2.microsynteny.tab 0.16
+#TIME-Wed Aug  2 07:56:58 2023
+fastarenamer.py -p Dmel6 -j | /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 07:56:58 2023
+fastarenamer.py -p DereRS2 -j | /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_003286155.1_DereRS2_protein.x.faa
+#TIME-Wed Aug  2 07:56:58 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_003286155.1_DereRS2_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_003286155.1_DereRS2_protein.x.n.faa
+#TIME-Wed Aug  2 07:56:58 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_003286155.1_DereRS2_protein.x.n.faa -o drosophila/Dmel6_vs_DereRS2.renamed.blastp.tab
+#TIME-Wed Aug  2 07:57:03 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DereRS2.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_003286155.1_DereRS2_protein.x.n.faa -p 234 -o drosophila_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 07:57:07 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 08:54:16 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_drosophila_clusters_v1/homologs_drosophila_clusters_v1_02666.fasta
+#TIME-Wed Aug  2 08:54:16 2023
+# INFORMATION: aligned 11270 pairs with MAFFT
+#TIME-Wed Aug  2 08:54:16 2023
+# INFORMATION: Pairwise identities for 11270 pairs
+#TIME-Wed Aug  2 08:54:16 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -p drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.faa.gz -f drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -o drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 08:54:20 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g drosophila/GCF_018153295.1_ASM1815329v1_genomic.gff.gz -p drosophila/GCF_018153295.1_ASM1815329v1_protein.faa.gz -f drosophila/GCF_018153295.1_ASM1815329v1_genomic.x.gff -o drosophila/GCF_018153295.1_ASM1815329v1_protein.x.faa
+#TIME-Wed Aug  2 08:54:22 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_018153295.1_ASM1815329v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_018153295.1_ASM1815329v1_protein.x.faa
+#TIME-Wed Aug  2 08:54:23 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_018153295.1_ASM1815329v1_protein.x.faa -o drosophila/Dmel6_vs_Dgrim.blastp.tab
+#TIME-Wed Aug  2 08:54:27 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_Dgrim.blastp.tab -q drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -f drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna.gz -d drosophila/GCF_018153295.1_ASM1815329v1_genomic.gff.gz -F drosophila/GCF_018153295.1_ASM1815329v1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 08:54:36 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_Dgrim.scaffold_synteny.tab Drosophila.melanogaster Drosophila.grimshawi 40
+#TIME-Wed Aug  2 08:54:40 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_Dgrim.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_018153295.1_ASM1815329v1_genomic.x.gff --genbank-gff -z 33510 -T -s 4
+#TIME-Wed Aug  2 08:54:42 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_Dgrim.microsynteny.tab 0.16
+#TIME-Wed Aug  2 08:54:49 2023
+fastarenamer.py -p Dmel6 -j | /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 08:54:49 2023
+fastarenamer.py -p Dgrim -j | /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_018153295.1_ASM1815329v1_protein.x.faa
+#TIME-Wed Aug  2 08:54:49 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_018153295.1_ASM1815329v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_018153295.1_ASM1815329v1_protein.x.n.faa
+#TIME-Wed Aug  2 08:54:49 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_018153295.1_ASM1815329v1_protein.x.n.faa -o drosophila/Dmel6_vs_Dgrim.renamed.blastp.tab
+#TIME-Wed Aug  2 08:54:55 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_Dgrim.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_018153295.1_ASM1815329v1_protein.x.n.faa -p 234 -o drosophila2_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 08:54:58 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 09:36:34 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_drosophila2_clusters_v1/homologs_drosophila2_clusters_v1_8880.fasta
+#TIME-Wed Aug  2 09:36:34 2023
+# INFORMATION: aligned 8101 pairs with MAFFT
+#TIME-Wed Aug  2 09:36:34 2023
+# INFORMATION: Pairwise identities for 8101 pairs
+#TIME-Wed Aug  2 09:36:34 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -p drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.faa.gz -f drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -o drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 09:36:38 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g drosophila/GCF_009870125.1_UCI_Dpse_MV25_genomic.gff.gz -p drosophila/GCF_009870125.1_UCI_Dpse_MV25_protein.faa.gz -f drosophila/GCF_009870125.1_UCI_Dpse_MV25_genomic.x.gff -o drosophila/GCF_009870125.1_UCI_Dpse_MV25_protein.x.faa
+#TIME-Wed Aug  2 09:36:42 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_009870125.1_UCI_Dpse_MV25_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_009870125.1_UCI_Dpse_MV25_protein.x.faa
+#TIME-Wed Aug  2 09:36:42 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_009870125.1_UCI_Dpse_MV25_protein.x.faa -o drosophila/Dmel6_vs_DpseMV25.blastp.tab
+#TIME-Wed Aug  2 09:36:47 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DpseMV25.blastp.tab -q drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -f drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna.gz -d drosophila/GCF_009870125.1_UCI_Dpse_MV25_genomic.gff.gz -F drosophila/GCF_009870125.1_UCI_Dpse_MV25_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 09:36:56 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DpseMV25.scaffold_synteny.tab Drosophila.melanogaster Drosophila.pseudoobscura 40
+#TIME-Wed Aug  2 09:37:00 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DpseMV25.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_009870125.1_UCI_Dpse_MV25_genomic.x.gff --genbank-gff -z 30700 -T -s 4
+#TIME-Wed Aug  2 09:37:02 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DpseMV25.microsynteny.tab 0.16
+#TIME-Wed Aug  2 09:37:09 2023
+fastarenamer.py -p Dmel6 -j | /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 09:37:09 2023
+fastarenamer.py -p DpseMV25 -j | /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_009870125.1_UCI_Dpse_MV25_protein.x.faa
+#TIME-Wed Aug  2 09:37:09 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_009870125.1_UCI_Dpse_MV25_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_009870125.1_UCI_Dpse_MV25_protein.x.n.faa
+#TIME-Wed Aug  2 09:37:09 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_009870125.1_UCI_Dpse_MV25_protein.x.n.faa -o drosophila/Dmel6_vs_DpseMV25.renamed.blastp.tab
+#TIME-Wed Aug  2 09:37:15 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/drosophila/Dmel6_vs_DpseMV25.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/drosophila/GCF_009870125.1_UCI_Dpse_MV25_protein.x.n.faa -p 234 -o drosophila3_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 09:37:18 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 10:22:48 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_drosophila3_clusters_v1/homologs_drosophila3_clusters_v1_3175.fasta
+#TIME-Wed Aug  2 10:22:48 2023
+# INFORMATION: aligned 8918 pairs with MAFFT
+#TIME-Wed Aug  2 10:22:48 2023
+# INFORMATION: Pairwise identities for 8918 pairs
+#TIME-Wed Aug  2 10:22:48 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_genomic.gff.gz -p epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_protein.faa.gz -f epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_genomic.x.gff -o epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_protein.x.faa
+#TIME-Wed Aug  2 10:22:57 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_genomic.gff.gz -p epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_protein.faa.gz -f epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_genomic.x.gff -o epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_protein.x.faa
+#TIME-Wed Aug  2 10:23:05 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_protein.x.faa
+#TIME-Wed Aug  2 10:23:05 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_protein.x.faa -o epinephelus/Efusco_vs_Emoara.blastp.tab
+#TIME-Wed Aug  2 10:23:20 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/epinephelus/Efusco_vs_Emoara.blastp.tab -q epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_genomic.gff.gz -f epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_genomic.fna.gz -d epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_genomic.gff.gz -F epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 10:24:00 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/epinephelus/Efusco_vs_Emoara.scaffold_synteny.tab Epinephelus.fuscoguttatus Ephinephelus.moara 25
+#TIME-Wed Aug  2 10:24:25 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/epinephelus/Efusco_vs_Emoara.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_genomic.x.gff --genbank-gff -z 207749 -T -s 4
+#TIME-Wed Aug  2 10:24:30 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/epinephelus/Efusco_vs_Emoara.microsynteny.tab 0.1
+#TIME-Wed Aug  2 10:24:42 2023
+fastarenamer.py -p Efusco -j | /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_protein.x.faa
+#TIME-Wed Aug  2 10:24:42 2023
+fastarenamer.py -p Emoara -j | /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_protein.x.faa
+#TIME-Wed Aug  2 10:24:43 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_protein.x.n.faa
+#TIME-Wed Aug  2 10:24:43 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_protein.x.n.faa -o epinephelus/Efusco_vs_Emoara.renamed.blastp.tab
+#TIME-Wed Aug  2 10:24:58 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/epinephelus/Efusco_vs_Emoara.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_011397635.1_E.fuscoguttatus.final_Chr_v1_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/epinephelus/GCF_006386435.1_YSFRI_EMoa_1.0_protein.x.n.faa -p 234 -o epinephelus2_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 10:25:05 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 11:35:52 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_epinephelus2_clusters_v1/homologs_epinephelus2_clusters_v1_10112.fasta
+#TIME-Wed Aug  2 11:35:52 2023
+# INFORMATION: aligned 13442 pairs with MAFFT
+#TIME-Wed Aug  2 11:35:52 2023
+# INFORMATION: Pairwise identities for 13442 pairs
+#TIME-Wed Aug  2 11:35:52 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g crassostrea/GCF_025612915.1_ASM2561291v2_genomic.gff.gz -p crassostrea/GCF_025612915.1_ASM2561291v2_protein.faa.gz -f crassostrea/GCF_025612915.1_ASM2561291v2_genomic.x.gff -o crassostrea/GCF_025612915.1_ASM2561291v2_protein.x.faa
+#TIME-Wed Aug  2 11:36:00 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g crassostrea/GCF_002022765.2_C_virginica-3.0_genomic.gff.gz -p crassostrea/GCF_002022765.2_C_virginica-3.0_protein.faa.gz -f crassostrea/GCF_002022765.2_C_virginica-3.0_genomic.x.gff -o crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.faa
+#TIME-Wed Aug  2 11:36:11 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.faa
+#TIME-Wed Aug  2 11:36:11 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_025612915.1_ASM2561291v2_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.faa -o crassostrea/Cang_vs_Cvir3.blastp.tab
+#TIME-Wed Aug  2 11:36:31 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/crassostrea/Cang_vs_Cvir3.blastp.tab -q crassostrea/GCF_025612915.1_ASM2561291v2_genomic.gff.gz -f crassostrea/GCF_025612915.1_ASM2561291v2_genomic.fna.gz -d crassostrea/GCF_002022765.2_C_virginica-3.0_genomic.gff.gz -F crassostrea/GCF_002022765.2_C_virginica-3.0_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 11:37:04 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/crassostrea/Cang_vs_Cvir3.scaffold_synteny.tab Crassostrea.angulata Crassostrea.virginica 229
+#TIME-Wed Aug  2 11:37:20 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/crassostrea/Cang_vs_Cvir3.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_025612915.1_ASM2561291v2_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_genomic.x.gff --genbank-gff -z 130901 -T -s 4
+#TIME-Wed Aug  2 11:37:32 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/crassostrea/Cang_vs_Cvir3.microsynteny.tab 0.9
+#TIME-Wed Aug  2 11:37:53 2023
+fastarenamer.py -p Cang -j | /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_025612915.1_ASM2561291v2_protein.x.faa
+#TIME-Wed Aug  2 11:37:53 2023
+fastarenamer.py -p Cvir3 -j | /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.faa
+#TIME-Wed Aug  2 11:37:53 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.n.faa
+#TIME-Wed Aug  2 11:37:54 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_025612915.1_ASM2561291v2_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.n.faa -o crassostrea/Cang_vs_Cvir3.renamed.blastp.tab
+#TIME-Wed Aug  2 11:38:14 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/crassostrea/Cang_vs_Cvir3.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_025612915.1_ASM2561291v2_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_002022765.2_C_virginica-3.0_protein.x.n.faa -p 234 -o crassostrea2_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 11:38:21 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 12:23:22 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_crassostrea2_clusters_v1/homologs_crassostrea2_clusters_v1_11906.fasta
+#TIME-Wed Aug  2 12:23:22 2023
+# INFORMATION: aligned 8684 pairs with MAFFT
+#TIME-Wed Aug  2 12:23:22 2023
+# INFORMATION: Pairwise identities for 8684 pairs
+#TIME-Wed Aug  2 12:23:22 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g culex/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_genomic.gff.gz -p culex/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.faa.gz -f culex/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_genomic.x.gff -o culex/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.faa
+#TIME-Wed Aug  2 12:23:25 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g culex/GCF_016801865.2_TS_CPP_V2_genomic.gff.gz -p culex/GCF_016801865.2_TS_CPP_V2_protein.faa.gz -f culex/GCF_016801865.2_TS_CPP_V2_genomic.x.gff -o culex/GCF_016801865.2_TS_CPP_V2_protein.x.faa
+#TIME-Wed Aug  2 12:23:28 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/culex/GCF_016801865.2_TS_CPP_V2_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/culex/GCF_016801865.2_TS_CPP_V2_protein.x.faa
+#TIME-Wed Aug  2 12:23:28 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/culex/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/culex/GCF_016801865.2_TS_CPP_V2_protein.x.faa -o culex/Cqui1_vs_CPPV2.blastp.tab
+#TIME-Wed Aug  2 12:23:35 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/culex/Cqui1_vs_CPPV2.blastp.tab -q culex/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_genomic.gff.gz -f culex/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_genomic.fna.gz -d culex/GCF_016801865.2_TS_CPP_V2_genomic.gff.gz -F culex/GCF_016801865.2_TS_CPP_V2_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 12:23:53 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/culex/Cqui1_vs_CPPV2.scaffold_synteny.tab Culex.quinquefasciatus Culex.pipiens 73
+#TIME-Wed Aug  2 12:24:07 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/culex/Cqui1_vs_CPPV2.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/culex/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/culex/GCF_016801865.2_TS_CPP_V2_genomic.x.gff --genbank-gff -z 113958 -T -s 4
+#TIME-Wed Aug  2 12:24:12 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/culex/Cqui1_vs_CPPV2.microsynteny.tab 0.29
+#TIME-Wed Aug  2 12:24:17 2023
+fastarenamer.py -p Cqui1 -j | /mnt/data/project/speciation-synteny/datasets/culex/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.faa
+#TIME-Wed Aug  2 12:24:17 2023
+fastarenamer.py -p CPPV2 -j | /mnt/data/project/speciation-synteny/datasets/culex/GCF_016801865.2_TS_CPP_V2_protein.x.faa
+#TIME-Wed Aug  2 12:24:17 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/culex/GCF_016801865.2_TS_CPP_V2_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/culex/GCF_016801865.2_TS_CPP_V2_protein.x.n.faa
+#TIME-Wed Aug  2 12:24:17 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/culex/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/culex/GCF_016801865.2_TS_CPP_V2_protein.x.n.faa -o culex/Cqui1_vs_CPPV2.renamed.blastp.tab
+#TIME-Wed Aug  2 12:24:24 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/culex/Cqui1_vs_CPPV2.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/culex/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/culex/GCF_016801865.2_TS_CPP_V2_protein.x.n.faa -p 234 -o culex_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 12:24:28 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 13:10:47 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_culex_clusters_v1/homologs_culex_clusters_v1_10580.fasta
+#TIME-Wed Aug  2 13:10:47 2023
+# INFORMATION: aligned 9127 pairs with MAFFT
+#TIME-Wed Aug  2 13:10:47 2023
+# INFORMATION: Pairwise identities for 9127 pairs
+#TIME-Wed Aug  2 13:10:47 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g vespa/GCF_910589235.1_iyVesCrab1.2_genomic.gff.gz -p vespa/GCF_910589235.1_iyVesCrab1.2_protein.faa.gz -f vespa/GCF_910589235.1_iyVesCrab1.2_genomic.x.gff -o vespa/GCF_910589235.1_iyVesCrab1.2_protein.x.faa
+#TIME-Wed Aug  2 13:10:51 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g vespa/GCF_912470025.1_iVesVel2.1_genomic.gff.gz -p vespa/GCF_912470025.1_iVesVel2.1_protein.faa.gz -f vespa/GCF_912470025.1_iVesVel2.1_genomic.x.gff -o vespa/GCF_912470025.1_iVesVel2.1_protein.x.faa
+#TIME-Wed Aug  2 13:10:56 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/vespa/GCF_912470025.1_iVesVel2.1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/vespa/GCF_912470025.1_iVesVel2.1_protein.x.faa
+#TIME-Wed Aug  2 13:10:56 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/vespa/GCF_910589235.1_iyVesCrab1.2_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/vespa/GCF_912470025.1_iVesVel2.1_protein.x.faa -o vespa/iyVesCrab1_vs_iVesVel2.blastp.tab
+#TIME-Wed Aug  2 13:11:00 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/vespa/iyVesCrab1_vs_iVesVel2.blastp.tab -q vespa/GCF_910589235.1_iyVesCrab1.2_genomic.gff.gz -f vespa/GCF_910589235.1_iyVesCrab1.2_genomic.fna.gz -d vespa/GCF_912470025.1_iVesVel2.1_genomic.gff.gz -F vespa/GCF_912470025.1_iVesVel2.1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 13:11:11 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/vespa/iyVesCrab1_vs_iVesVel2.scaffold_synteny.tab Vespa.crabro Vespa.velutina 247
+#TIME-Wed Aug  2 13:11:16 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/vespa/iyVesCrab1_vs_iVesVel2.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/vespa/GCF_910589235.1_iyVesCrab1.2_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/vespa/GCF_912470025.1_iVesVel2.1_genomic.x.gff --genbank-gff -z 42329 -T -s 4
+#TIME-Wed Aug  2 13:11:17 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/vespa/iyVesCrab1_vs_iVesVel2.microsynteny.tab 0.97
+#TIME-Wed Aug  2 13:11:19 2023
+fastarenamer.py -p iyVesCrab1 -j | /mnt/data/project/speciation-synteny/datasets/vespa/GCF_910589235.1_iyVesCrab1.2_protein.x.faa
+#TIME-Wed Aug  2 13:11:19 2023
+fastarenamer.py -p iVesVel2 -j | /mnt/data/project/speciation-synteny/datasets/vespa/GCF_912470025.1_iVesVel2.1_protein.x.faa
+#TIME-Wed Aug  2 13:11:19 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/vespa/GCF_912470025.1_iVesVel2.1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/vespa/GCF_912470025.1_iVesVel2.1_protein.x.n.faa
+#TIME-Wed Aug  2 13:11:20 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/vespa/GCF_910589235.1_iyVesCrab1.2_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/vespa/GCF_912470025.1_iVesVel2.1_protein.x.n.faa -o vespa/iyVesCrab1_vs_iVesVel2.renamed.blastp.tab
+#TIME-Wed Aug  2 13:11:24 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/vespa/iyVesCrab1_vs_iVesVel2.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/vespa/GCF_910589235.1_iyVesCrab1.2_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/vespa/GCF_912470025.1_iVesVel2.1_protein.x.n.faa -p 234 -o vespa_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 13:11:26 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 13:55:44 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_vespa_clusters_v1/homologs_vespa_clusters_v1_5985.fasta
+#TIME-Wed Aug  2 13:55:44 2023
+# INFORMATION: aligned 8661 pairs with MAFFT
+#TIME-Wed Aug  2 13:55:44 2023
+# INFORMATION: Pairwise identities for 8661 pairs
+#TIME-Wed Aug  2 13:55:44 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -p insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.faa.gz -f insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -o insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 13:55:48 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g insects/GCF_027943255.1_idAnaObli1_1.0_genomic.gff.gz -p insects/GCF_027943255.1_idAnaObli1_1.0_protein.faa.gz -f insects/GCF_027943255.1_idAnaObli1_1.0_genomic.x.gff -o insects/GCF_027943255.1_idAnaObli1_1.0_protein.x.faa
+#TIME-Wed Aug  2 13:55:50 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/insects/GCF_027943255.1_idAnaObli1_1.0_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_027943255.1_idAnaObli1_1.0_protein.x.faa
+#TIME-Wed Aug  2 13:55:50 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_027943255.1_idAnaObli1_1.0_protein.x.faa -o insects/Dmel6_vs_AnaObli1.blastp.tab
+#TIME-Wed Aug  2 13:55:55 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_AnaObli1.blastp.tab -q insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -f insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna.gz -d insects/GCF_027943255.1_idAnaObli1_1.0_genomic.gff.gz -F insects/GCF_027943255.1_idAnaObli1_1.0_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 13:56:12 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_AnaObli1.scaffold_synteny.tab Drosophila.melanogaster Anastrepha.obliqua 40
+#TIME-Wed Aug  2 13:56:26 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_AnaObli1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_027943255.1_idAnaObli1_1.0_genomic.x.gff --genbank-gff -z 98046 -T -s 4
+#TIME-Wed Aug  2 13:56:28 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_AnaObli1.microsynteny.tab 0.16
+#TIME-Wed Aug  2 13:56:32 2023
+fastarenamer.py -p Dmel6 -j | /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 13:56:32 2023
+fastarenamer.py -p AnaObli1 -j | /mnt/data/project/speciation-synteny/datasets/insects/GCF_027943255.1_idAnaObli1_1.0_protein.x.faa
+#TIME-Wed Aug  2 13:56:32 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/insects/GCF_027943255.1_idAnaObli1_1.0_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_027943255.1_idAnaObli1_1.0_protein.x.n.faa
+#TIME-Wed Aug  2 13:56:33 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_027943255.1_idAnaObli1_1.0_protein.x.n.faa -o insects/Dmel6_vs_AnaObli1.renamed.blastp.tab
+#TIME-Wed Aug  2 13:56:38 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_AnaObli1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/insects/GCF_027943255.1_idAnaObli1_1.0_protein.x.n.faa -p 234 -o insects1_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 13:56:40 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 14:28:47 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_insects1_clusters_v1/homologs_insects1_clusters_v1_5907.fasta
+#TIME-Wed Aug  2 14:28:47 2023
+# INFORMATION: aligned 6105 pairs with MAFFT
+#TIME-Wed Aug  2 14:28:47 2023
+# INFORMATION: Pairwise identities for 6105 pairs
+#TIME-Wed Aug  2 14:28:47 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -p insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.faa.gz -f insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -o insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 14:28:51 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g insects/GCF_910589235.1_iyVesCrab1.2_genomic.gff.gz -p insects/GCF_910589235.1_iyVesCrab1.2_protein.faa.gz -f insects/GCF_910589235.1_iyVesCrab1.2_genomic.x.gff -o insects/GCF_910589235.1_iyVesCrab1.2_protein.x.faa
+#TIME-Wed Aug  2 14:28:55 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/insects/GCF_910589235.1_iyVesCrab1.2_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_910589235.1_iyVesCrab1.2_protein.x.faa
+#TIME-Wed Aug  2 14:28:55 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_910589235.1_iyVesCrab1.2_protein.x.faa -o insects/Dmel6_vs_iyVesCrab1.blastp.tab
+#TIME-Wed Aug  2 14:28:59 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_iyVesCrab1.blastp.tab -q insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -f insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna.gz -d insects/GCF_910589235.1_iyVesCrab1.2_genomic.gff.gz -F insects/GCF_910589235.1_iyVesCrab1.2_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 14:29:09 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_iyVesCrab1.scaffold_synteny.tab Drosophila.melanogaster Vespa.crabro 40
+#TIME-Wed Aug  2 14:29:14 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_iyVesCrab1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_910589235.1_iyVesCrab1.2_genomic.x.gff --genbank-gff -z 37303 -T -s 4
+#TIME-Wed Aug  2 14:29:16 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_iyVesCrab1.microsynteny.tab 0.16
+#TIME-Wed Aug  2 14:29:16 2023
+fastarenamer.py -p Dmel6 -j | /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 14:29:16 2023
+fastarenamer.py -p iyVesCrab1 -j | /mnt/data/project/speciation-synteny/datasets/insects/GCF_910589235.1_iyVesCrab1.2_protein.x.faa
+#TIME-Wed Aug  2 14:29:16 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/insects/GCF_910589235.1_iyVesCrab1.2_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_910589235.1_iyVesCrab1.2_protein.x.n.faa
+#TIME-Wed Aug  2 14:29:17 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_910589235.1_iyVesCrab1.2_protein.x.n.faa -o insects/Dmel6_vs_iyVesCrab1.renamed.blastp.tab
+#TIME-Wed Aug  2 14:29:20 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_iyVesCrab1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/insects/GCF_910589235.1_iyVesCrab1.2_protein.x.n.faa -p 234 -o insects2_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 14:29:22 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 14:45:29 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_insects2_clusters_v1/homologs_insects2_clusters_v1_1924.fasta
+#TIME-Wed Aug  2 14:45:29 2023
+# INFORMATION: aligned 2921 pairs with MAFFT
+#TIME-Wed Aug  2 14:45:29 2023
+# INFORMATION: Pairwise identities for 2921 pairs
+#TIME-Wed Aug  2 14:45:29 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -p insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.faa.gz -f insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -o insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 14:45:33 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_genomic.gff.gz -p insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.faa.gz -f insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_genomic.x.gff -o insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.faa
+#TIME-Wed Aug  2 14:45:36 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.faa
+#TIME-Wed Aug  2 14:45:36 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.faa -o insects/Dmel6_vs_Cqui1.blastp.tab
+#TIME-Wed Aug  2 14:45:40 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_Cqui1.blastp.tab -q insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -f insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna.gz -d insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_genomic.gff.gz -F insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 14:45:54 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_Cqui1.scaffold_synteny.tab Drosophila.melanogaster Culex.quinquefasciatus 40
+#TIME-Wed Aug  2 14:46:03 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_Cqui1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_genomic.x.gff --genbank-gff -z 71695 -T -s 4
+#TIME-Wed Aug  2 14:46:05 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_Cqui1.microsynteny.tab 0.16
+#TIME-Wed Aug  2 14:46:05 2023
+fastarenamer.py -p Dmel6 -j | /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 14:46:05 2023
+fastarenamer.py -p Cqui1 -j | /mnt/data/project/speciation-synteny/datasets/insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.faa
+#TIME-Wed Aug  2 14:46:06 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.n.faa
+#TIME-Wed Aug  2 14:46:06 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.n.faa -o insects/Dmel6_vs_Cqui1.renamed.blastp.tab
+#TIME-Wed Aug  2 14:46:10 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_Cqui1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/insects/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_protein.x.n.faa -p 234 -o insects3_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 14:46:12 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 15:07:52 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_insects3_clusters_v1/homologs_insects3_clusters_v1_0909.fasta
+#TIME-Wed Aug  2 15:07:52 2023
+# INFORMATION: aligned 3863 pairs with MAFFT
+#TIME-Wed Aug  2 15:07:52 2023
+# INFORMATION: Pairwise identities for 3863 pairs
+#TIME-Wed Aug  2 15:07:52 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -p insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.faa.gz -f insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -o insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 15:07:56 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g insects/GCF_910591885.1_iyBomTerr1.2_genomic.gff.gz -p insects/GCF_910591885.1_iyBomTerr1.2_protein.faa.gz -f insects/GCF_910591885.1_iyBomTerr1.2_genomic.x.gff -o insects/GCF_910591885.1_iyBomTerr1.2_protein.x.faa
+#TIME-Wed Aug  2 15:08:00 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/insects/GCF_910591885.1_iyBomTerr1.2_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_910591885.1_iyBomTerr1.2_protein.x.faa
+#TIME-Wed Aug  2 15:08:00 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_910591885.1_iyBomTerr1.2_protein.x.faa -o insects/Dmel6_vs_iyBomTerr1.blastp.tab
+#TIME-Wed Aug  2 15:08:04 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_iyBomTerr1.blastp.tab -q insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.gff.gz -f insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna.gz -d insects/GCF_910591885.1_iyBomTerr1.2_genomic.gff.gz -F insects/GCF_910591885.1_iyBomTerr1.2_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 15:08:16 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_iyBomTerr1.scaffold_synteny.tab Drosophila.melanogaster Bombus.terrestris 40
+#TIME-Wed Aug  2 15:08:22 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_iyBomTerr1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_910591885.1_iyBomTerr1.2_genomic.x.gff --genbank-gff -z 53668 -T -s 4
+#TIME-Wed Aug  2 15:08:24 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_iyBomTerr1.microsynteny.tab 0.16
+#TIME-Wed Aug  2 15:08:24 2023
+fastarenamer.py -p Dmel6 -j | /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.faa
+#TIME-Wed Aug  2 15:08:24 2023
+fastarenamer.py -p iyBomTerr1 -j | /mnt/data/project/speciation-synteny/datasets/insects/GCF_910591885.1_iyBomTerr1.2_protein.x.faa
+#TIME-Wed Aug  2 15:08:24 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/insects/GCF_910591885.1_iyBomTerr1.2_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_910591885.1_iyBomTerr1.2_protein.x.n.faa
+#TIME-Wed Aug  2 15:08:24 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/insects/GCF_910591885.1_iyBomTerr1.2_protein.x.n.faa -o insects/Dmel6_vs_iyBomTerr1.renamed.blastp.tab
+#TIME-Wed Aug  2 15:08:28 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_iyBomTerr1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/insects/GCF_910591885.1_iyBomTerr1.2_protein.x.n.faa -p 234 -o insects4_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 15:08:30 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 15:24:33 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_insects4_clusters_v1/homologs_insects4_clusters_v1_0786.fasta
+#TIME-Wed Aug  2 15:24:33 2023
+# INFORMATION: aligned 2902 pairs with MAFFT
+#TIME-Wed Aug  2 15:24:33 2023
+# INFORMATION: Pairwise identities for 2902 pairs
+#TIME-Wed Aug  2 15:24:33 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g crassostrea/GCF_025612915.1_ASM2561291v2_genomic.gff.gz -p crassostrea/GCF_025612915.1_ASM2561291v2_protein.faa.gz -f crassostrea/GCF_025612915.1_ASM2561291v2_genomic.x.gff -o crassostrea/GCF_025612915.1_ASM2561291v2_protein.x.faa
+#TIME-Wed Aug  2 15:24:43 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_genomic.gff.gz -p crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.faa.gz -f crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_genomic.x.gff -o crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.faa
+#TIME-Wed Aug  2 15:24:55 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.faa
+#TIME-Wed Aug  2 15:24:55 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_025612915.1_ASM2561291v2_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.faa -o crassostrea/Cang_vs_Cgig1.blastp.tab
+#TIME-Wed Aug  2 15:25:19 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/crassostrea/Cang_vs_Cgig1.blastp.tab -q crassostrea/GCF_025612915.1_ASM2561291v2_genomic.gff.gz -f crassostrea/GCF_025612915.1_ASM2561291v2_genomic.fna.gz -d crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_genomic.gff.gz -F crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 15:25:52 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/crassostrea/Cang_vs_Cgig1.scaffold_synteny.tab Crassostrea.angulata Crassostrea.gigas 229
+#TIME-Wed Aug  2 15:26:09 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/crassostrea/Cang_vs_Cgig1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_025612915.1_ASM2561291v2_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_genomic.x.gff --genbank-gff -z 127216 -T -s 4
+#TIME-Wed Aug  2 15:26:22 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/crassostrea/Cang_vs_Cgig1.microsynteny.tab 0.9
+#TIME-Wed Aug  2 15:26:42 2023
+fastarenamer.py -p Cang -j | /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_025612915.1_ASM2561291v2_protein.x.faa
+#TIME-Wed Aug  2 15:26:42 2023
+fastarenamer.py -p Cgig1 -j | /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.faa
+#TIME-Wed Aug  2 15:26:42 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.n.faa
+#TIME-Wed Aug  2 15:26:43 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_025612915.1_ASM2561291v2_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.n.faa -o crassostrea/Cang_vs_Cgig1.renamed.blastp.tab
+#TIME-Wed Aug  2 15:27:05 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/crassostrea/Cang_vs_Cgig1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_025612915.1_ASM2561291v2_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/crassostrea/GCF_902806645.1_cgigas_uk_roslin_v1_protein.x.n.faa -p 234 -o crassostrea3_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 15:27:14 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 16:38:56 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_crassostrea3_clusters_v1/homologs_crassostrea3_clusters_v1_15682.fasta
+#TIME-Wed Aug  2 16:38:56 2023
+# INFORMATION: aligned 13920 pairs with MAFFT
+#TIME-Wed Aug  2 16:38:56 2023
+# INFORMATION: Pairwise identities for 13920 pairs
+#TIME-Wed Aug  2 16:38:56 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g homonids/GCF_000001405.40_GRCh38.p14_genomic.gff.gz -p homonids/GCF_000001405.40_GRCh38.p14_protein.faa.gz -f homonids/GCF_000001405.40_GRCh38.p14_genomic.x.gff -o homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa
+#TIME-Wed Aug  2 16:39:27 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_genomic.gff.gz -p homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_protein.faa.gz -f homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_genomic.x.gff -o homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_protein.x.faa
+#TIME-Wed Aug  2 16:39:44 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_protein.x.faa
+#TIME-Wed Aug  2 16:39:44 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_protein.x.faa -o homonids/GRCh38p14_vs_mPanTro3.blastp.tab
+#TIME-Wed Aug  2 16:39:55 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mPanTro3.blastp.tab -q homonids/GCF_000001405.40_GRCh38.p14_genomic.gff.gz -f homonids/GCF_000001405.40_GRCh38.p14_genomic.fna.gz -d homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_genomic.gff.gz -F homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 16:41:52 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mPanTro3.scaffold_synteny.tab Homo.sapiens Pan.troglodytes 252
+#TIME-Wed Aug  2 16:43:05 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mPanTro3.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_genomic.x.gff --genbank-gff -z 652378 -T -s 4
+#TIME-Wed Aug  2 16:43:10 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mPanTro3.microsynteny.tab 0.99
+#TIME-Wed Aug  2 16:43:18 2023
+fastarenamer.py -p GRCh38p14 -j | /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa
+#TIME-Wed Aug  2 16:43:18 2023
+fastarenamer.py -p mPanTro3 -j | /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_protein.x.faa
+#TIME-Wed Aug  2 16:43:18 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_protein.x.n.faa
+#TIME-Wed Aug  2 16:43:19 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_protein.x.n.faa -o homonids/GRCh38p14_vs_mPanTro3.renamed.blastp.tab
+#TIME-Wed Aug  2 16:43:30 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mPanTro3.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_protein.x.n.faa -p 234 -o homonids1_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 16:43:36 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 17:47:00 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_homonids1_clusters_v1/homologs_homonids1_clusters_v1_12152.fasta
+#TIME-Wed Aug  2 17:47:00 2023
+# INFORMATION: aligned 12799 pairs with MAFFT
+#TIME-Wed Aug  2 17:47:00 2023
+# INFORMATION: Pairwise identities for 12799 pairs
+#TIME-Wed Aug  2 17:47:00 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g homonids/GCF_000001405.40_GRCh38.p14_genomic.gff.gz -p homonids/GCF_000001405.40_GRCh38.p14_protein.faa.gz -f homonids/GCF_000001405.40_GRCh38.p14_genomic.x.gff -o homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa
+#TIME-Wed Aug  2 17:47:30 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_genomic.gff.gz -p homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_protein.faa.gz -f homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_genomic.x.gff -o homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_protein.x.faa
+#TIME-Wed Aug  2 17:47:45 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_protein.x.faa
+#TIME-Wed Aug  2 17:47:45 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_protein.x.faa -o homonids/GRCh38p14_vs_mGorGor1.blastp.tab
+#TIME-Wed Aug  2 17:47:56 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mGorGor1.blastp.tab -q homonids/GCF_000001405.40_GRCh38.p14_genomic.gff.gz -f homonids/GCF_000001405.40_GRCh38.p14_genomic.fna.gz -d homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_genomic.gff.gz -F homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 17:50:00 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mGorGor1.scaffold_synteny.tab Homo.sapiens Gorilla.gorilla 252
+#TIME-Wed Aug  2 17:51:23 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mGorGor1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_genomic.x.gff --genbank-gff -z 689899 -T -s 4
+#TIME-Wed Aug  2 17:51:28 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mGorGor1.microsynteny.tab 0.99
+#TIME-Wed Aug  2 17:51:38 2023
+fastarenamer.py -p GRCh38p14 -j | /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa
+#TIME-Wed Aug  2 17:51:38 2023
+fastarenamer.py -p mGorGor1 -j | /mnt/data/project/speciation-synteny/datasets/homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_protein.x.faa
+#TIME-Wed Aug  2 17:51:38 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_protein.x.n.faa
+#TIME-Wed Aug  2 17:51:39 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_protein.x.n.faa -o homonids/GRCh38p14_vs_mGorGor1.renamed.blastp.tab
+#TIME-Wed Aug  2 17:51:51 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mGorGor1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/homonids/GCF_029281585.1_NHGRI_mGorGor1-v1.1-0.2.freeze_pri_protein.x.n.faa -p 234 -o homonids2_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 17:51:58 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 18:56:06 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_homonids2_clusters_v1/homologs_homonids2_clusters_v1_05360.fasta
+#TIME-Wed Aug  2 18:56:06 2023
+# INFORMATION: aligned 12777 pairs with MAFFT
+#TIME-Wed Aug  2 18:56:06 2023
+# INFORMATION: Pairwise identities for 12777 pairs
+#TIME-Wed Aug  2 18:56:06 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g homonids/GCF_000001405.40_GRCh38.p14_genomic.gff.gz -p homonids/GCF_000001405.40_GRCh38.p14_protein.faa.gz -f homonids/GCF_000001405.40_GRCh38.p14_genomic.x.gff -o homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa
+#TIME-Wed Aug  2 18:56:36 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_genomic.gff.gz -p homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_protein.faa.gz -f homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_genomic.x.gff -o homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_protein.x.faa
+#TIME-Wed Aug  2 18:56:51 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_protein.x.faa
+#TIME-Wed Aug  2 18:56:51 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_protein.x.faa -o homonids/GRCh38p14_vs_mPonAbe1.blastp.tab
+#TIME-Wed Aug  2 18:57:02 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mPonAbe1.blastp.tab -q homonids/GCF_000001405.40_GRCh38.p14_genomic.gff.gz -f homonids/GCF_000001405.40_GRCh38.p14_genomic.fna.gz -d homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_genomic.gff.gz -F homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 18:58:55 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mPonAbe1.scaffold_synteny.tab Homo.sapiens Pongo.abelii 252
+#TIME-Wed Aug  2 19:00:11 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mPonAbe1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_genomic.x.gff --genbank-gff -z 666392 -T -s 4
+#TIME-Wed Aug  2 19:00:16 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mPonAbe1.microsynteny.tab 0.99
+#TIME-Wed Aug  2 19:00:25 2023
+fastarenamer.py -p GRCh38p14 -j | /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa
+#TIME-Wed Aug  2 19:00:25 2023
+fastarenamer.py -p mPonAbe1 -j | /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_protein.x.faa
+#TIME-Wed Aug  2 19:00:25 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_protein.x.n.faa
+#TIME-Wed Aug  2 19:00:26 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_protein.x.n.faa -o homonids/GRCh38p14_vs_mPonAbe1.renamed.blastp.tab
+#TIME-Wed Aug  2 19:00:36 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mPonAbe1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/homonids/GCF_028885655.1_NHGRI_mPonAbe1-v1.1-hic.freeze_pri_protein.x.n.faa -p 234 -o homonids3_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 19:00:42 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 20:03:21 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_homonids3_clusters_v1/homologs_homonids3_clusters_v1_05924.fasta
+#TIME-Wed Aug  2 20:03:21 2023
+# INFORMATION: aligned 12553 pairs with MAFFT
+#TIME-Wed Aug  2 20:03:21 2023
+# INFORMATION: Pairwise identities for 12553 pairs
+#TIME-Wed Aug  2 20:03:21 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g homonids/GCF_000001405.40_GRCh38.p14_genomic.gff.gz -p homonids/GCF_000001405.40_GRCh38.p14_protein.faa.gz -f homonids/GCF_000001405.40_GRCh38.p14_genomic.x.gff -o homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa
+#TIME-Wed Aug  2 20:03:50 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g homonids/GCF_006542625.1_Asia_NLE_v1_genomic.gff.gz -p homonids/GCF_006542625.1_Asia_NLE_v1_protein.faa.gz -f homonids/GCF_006542625.1_Asia_NLE_v1_genomic.x.gff -o homonids/GCF_006542625.1_Asia_NLE_v1_protein.x.faa
+#TIME-Wed Aug  2 20:04:00 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/homonids/GCF_006542625.1_Asia_NLE_v1_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_006542625.1_Asia_NLE_v1_protein.x.faa
+#TIME-Wed Aug  2 20:04:00 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_006542625.1_Asia_NLE_v1_protein.x.faa -o homonids/GRCh38p14_vs_AsiaNLE.blastp.tab
+#TIME-Wed Aug  2 20:04:11 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_AsiaNLE.blastp.tab -q homonids/GCF_000001405.40_GRCh38.p14_genomic.gff.gz -f homonids/GCF_000001405.40_GRCh38.p14_genomic.fna.gz -d homonids/GCF_006542625.1_Asia_NLE_v1_genomic.gff.gz -F homonids/GCF_006542625.1_Asia_NLE_v1_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 20:05:54 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_AsiaNLE.scaffold_synteny.tab Homo.sapiens Nomascus.leucogenys 252
+#TIME-Wed Aug  2 20:07:04 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_AsiaNLE.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_006542625.1_Asia_NLE_v1_genomic.x.gff --genbank-gff -z 614241 -T -s 4
+#TIME-Wed Aug  2 20:07:08 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_AsiaNLE.microsynteny.tab 0.99
+#TIME-Wed Aug  2 20:07:18 2023
+fastarenamer.py -p GRCh38p14 -j | /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa
+#TIME-Wed Aug  2 20:07:18 2023
+fastarenamer.py -p AsiaNLE -j | /mnt/data/project/speciation-synteny/datasets/homonids/GCF_006542625.1_Asia_NLE_v1_protein.x.faa
+#TIME-Wed Aug  2 20:07:19 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/homonids/GCF_006542625.1_Asia_NLE_v1_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_006542625.1_Asia_NLE_v1_protein.x.n.faa
+#TIME-Wed Aug  2 20:07:19 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_006542625.1_Asia_NLE_v1_protein.x.n.faa -o homonids/GRCh38p14_vs_AsiaNLE.renamed.blastp.tab
+#TIME-Wed Aug  2 20:07:30 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_AsiaNLE.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/homonids/GCF_006542625.1_Asia_NLE_v1_protein.x.n.faa -p 234 -o homonids4_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 20:07:35 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 21:09:56 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_homonids4_clusters_v1/homologs_homonids4_clusters_v1_11637.fasta
+#TIME-Wed Aug  2 21:09:56 2023
+# INFORMATION: aligned 12580 pairs with MAFFT
+#TIME-Wed Aug  2 21:09:56 2023
+# INFORMATION: Pairwise identities for 12580 pairs
+#TIME-Wed Aug  2 21:09:56 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g homonids/GCF_000001405.40_GRCh38.p14_genomic.gff.gz -p homonids/GCF_000001405.40_GRCh38.p14_protein.faa.gz -f homonids/GCF_000001405.40_GRCh38.p14_genomic.x.gff -o homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa
+#TIME-Wed Aug  2 21:10:27 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g homonids/GCF_000001635.27_GRCm39_genomic.gff.gz -p homonids/GCF_000001635.27_GRCm39_protein.faa.gz -f homonids/GCF_000001635.27_GRCm39_genomic.x.gff -o homonids/GCF_000001635.27_GRCm39_protein.x.faa
+#TIME-Wed Aug  2 21:10:45 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001635.27_GRCm39_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001635.27_GRCm39_protein.x.faa
+#TIME-Wed Aug  2 21:10:46 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001635.27_GRCm39_protein.x.faa -o homonids/GRCh38p14_vs_GRCm39.blastp.tab
+#TIME-Wed Aug  2 21:10:56 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_GRCm39.blastp.tab -q homonids/GCF_000001405.40_GRCh38.p14_genomic.gff.gz -f homonids/GCF_000001405.40_GRCh38.p14_genomic.fna.gz -d homonids/GCF_000001635.27_GRCm39_genomic.gff.gz -F homonids/GCF_000001635.27_GRCm39_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 21:12:46 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_GRCm39.scaffold_synteny.tab Homo.sapiens Mus.musculus 252
+#TIME-Wed Aug  2 21:13:55 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_GRCm39.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001635.27_GRCm39_genomic.x.gff --genbank-gff -z 602665 -T -s 4
+#TIME-Wed Aug  2 21:13:59 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_GRCm39.microsynteny.tab 0.99
+#TIME-Wed Aug  2 21:14:10 2023
+fastarenamer.py -p GRCh38p14 -j | /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa
+#TIME-Wed Aug  2 21:14:10 2023
+fastarenamer.py -p GRCm39 -j | /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001635.27_GRCm39_protein.x.faa
+#TIME-Wed Aug  2 21:14:10 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001635.27_GRCm39_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001635.27_GRCm39_protein.x.n.faa
+#TIME-Wed Aug  2 21:14:11 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001635.27_GRCm39_protein.x.n.faa -o homonids/GRCh38p14_vs_GRCm39.renamed.blastp.tab
+#TIME-Wed Aug  2 21:14:21 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_GRCm39.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001635.27_GRCm39_protein.x.n.faa -p 234 -o homonids5_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 21:14:26 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 22:10:16 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_homonids5_clusters_v1/homologs_homonids5_clusters_v1_07498.fasta
+#TIME-Wed Aug  2 22:10:16 2023
+# INFORMATION: aligned 11231 pairs with MAFFT
+#TIME-Wed Aug  2 22:10:16 2023
+# INFORMATION: Pairwise identities for 11231 pairs
+#TIME-Wed Aug  2 22:10:16 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g homonids/GCF_000001405.40_GRCh38.p14_genomic.gff.gz -p homonids/GCF_000001405.40_GRCh38.p14_protein.faa.gz -f homonids/GCF_000001405.40_GRCh38.p14_genomic.x.gff -o homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa
+#TIME-Wed Aug  2 22:10:46 2023
+/home/wrf/project/speciation-synteny/get_genbank_longest_isoforms.py -g homonids/GCF_027887165.1_mMonDom1.pri_genomic.gff.gz -p homonids/GCF_027887165.1_mMonDom1.pri_protein.faa.gz -f homonids/GCF_027887165.1_mMonDom1.pri_genomic.x.gff -o homonids/GCF_027887165.1_mMonDom1.pri_protein.x.faa
+#TIME-Wed Aug  2 22:10:57 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/homonids/GCF_027887165.1_mMonDom1.pri_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_027887165.1_mMonDom1.pri_protein.x.faa
+#TIME-Wed Aug  2 22:10:57 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_027887165.1_mMonDom1.pri_protein.x.faa -o homonids/GRCh38p14_vs_mMonDom1.blastp.tab
+#TIME-Wed Aug  2 22:11:08 2023
+/home/wrf/git/genomeGTFtools/scaffold_synteny.py -b /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mMonDom1.blastp.tab -q homonids/GCF_000001405.40_GRCh38.p14_genomic.gff.gz -f homonids/GCF_000001405.40_GRCh38.p14_genomic.fna.gz -d homonids/GCF_027887165.1_mMonDom1.pri_genomic.gff.gz -F homonids/GCF_027887165.1_mMonDom1.pri_genomic.fna.gz --ignore-gene-features --genbank-gff
+#TIME-Wed Aug  2 22:13:03 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_2d_plot.R /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mMonDom1.scaffold_synteny.tab Homo.sapiens Monodelphis.domestica 252
+#TIME-Wed Aug  2 22:14:23 2023
+/home/wrf/git/genomeGTFtools/microsynteny.py -b /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mMonDom1.blastp.tab -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_genomic.x.gff -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_027887165.1_mMonDom1.pri_genomic.x.gff --genbank-gff -z 688459 -T -s 4
+#TIME-Wed Aug  2 22:14:27 2023
+Rscript /home/wrf/git/genomeGTFtools/synteny_block_length_plot.R /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mMonDom1.microsynteny.tab 0.99
+#TIME-Wed Aug  2 22:14:40 2023
+fastarenamer.py -p GRCh38p14 -j | /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.faa
+#TIME-Wed Aug  2 22:14:41 2023
+fastarenamer.py -p mMonDom1 -j | /mnt/data/project/speciation-synteny/datasets/homonids/GCF_027887165.1_mMonDom1.pri_protein.x.faa
+#TIME-Wed Aug  2 22:14:41 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 makedb --in /mnt/data/project/speciation-synteny/datasets/homonids/GCF_027887165.1_mMonDom1.pri_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_027887165.1_mMonDom1.pri_protein.x.n.faa
+#TIME-Wed Aug  2 22:14:41 2023
+/home/wrf/diamond-v2.0.13/diamond-v2.0.13 blastp -q /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.n.faa -d /mnt/data/project/speciation-synteny/datasets/homonids/GCF_027887165.1_mMonDom1.pri_protein.x.n.faa -o homonids/GRCh38p14_vs_mMonDom1.renamed.blastp.tab
+#TIME-Wed Aug  2 22:14:51 2023
+makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/homonids/GRCh38p14_vs_mMonDom1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/homonids/GCF_000001405.40_GRCh38.p14_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/homonids/GCF_027887165.1_mMonDom1.pri_protein.x.n.faa -p 234 -o homonids6_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 22:14:56 2023
+# INFORMATION: starting MAFFT commands
+#TIME-Wed Aug  2 23:00:44 2023
+mafft --anysymbol /mnt/data/project/speciation-synteny/datasets/clusters_homonids6_clusters_v1/homologs_homonids6_clusters_v1_04799.fasta
+#TIME-Wed Aug  2 23:00:44 2023
+# INFORMATION: aligned 9164 pairs with MAFFT
+#TIME-Wed Aug  2 23:00:44 2023
+# INFORMATION: Pairwise identities for 9164 pairs
+#TIME-Wed Aug  2 23:00:44 2023
+#TIME-Process completed in 1721.1 minutes

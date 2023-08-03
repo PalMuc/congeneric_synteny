@@ -1,0 +1,115 @@
+#TIME-Wed Aug  2 15:08:29 2023
+/home/wrf/git/sequences/makehomologs.py -i /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_iyBomTerr1.renamed.blastp.tab -f /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/insects/GCF_910591885.1_iyBomTerr1.2_protein.x.n.faa -p 234 -o insects4_clusters_v1 -z 2 -s 2 -M10 -H 9 -c
+#TIME-Wed Aug  2 15:08:29 2023
+# Using Python version: 3.8.10
+#TIME-Wed Aug  2 15:08:29 2023
+# /mnt/data/project/speciation-synteny/datasets/insects/Dmel6_vs_iyBomTerr1.renamed.blastp.tab input file detected
+#TIME-Wed Aug  2 15:08:29 2023
+# /mnt/data/project/speciation-synteny/datasets/insects/GCF_000001215.4_Release_6_plus_ISO1_MT_protein.x.n.faa /mnt/data/project/speciation-synteny/datasets/insects/GCF_910591885.1_iyBomTerr1.2_protein.x.n.faa used as fasta database
+#TIME-Wed Aug  2 15:08:29 2023
+# Counted 24296 total proteins for 2 species  Wed Aug  2 15:08:29 2023
+#TIME-Wed Aug  2 15:08:29 2023
+T_genes	Dmel6	13986
+T_genes	iyBomTerr1	10310
+#TIME-Wed Aug  2 15:08:29 2023
+N_bhits	Dmel6	4306
+N_bhits	iyBomTerr1	3885
+#TIME-Wed Aug  2 15:08:29 2023
+# Counting nodes in subgraphs
+#TIME-Wed Aug  2 15:08:29 2023
+# Found 8191 subgraphs, pruning small subgraphs (0 nodes)
+#TIME-Wed Aug  2 15:08:29 2023
+F_edge	all	37834
+F_edge	non-self	37834
+F_edge	passed-min-overlap	34930
+F_edge	passed-max-overlap	31889
+F_edge	passed-bitscore	6386
+F_edge	retained-edges	6386
+#TIME-Wed Aug  2 15:08:29 2023
+N_nodes	nodes	8191
+N_nodes	filtered-nodes	8191
+#TIME-Wed Aug  2 15:08:29 2023
+#CMD  mcl allvall_edges_insects4_clusters_v1.abc --abc -I 2.1 -o mcl_gene_clusters_insects4_clusters_v1.abc -te 8
+#TIME-Wed Aug  2 15:08:29 2023
+# fasta file contains 24296 records
+#TIME-Wed Aug  2 15:08:30 2023
+N_seqs	30	1
+N_seqs	27	1
+N_seqs	26	1
+N_seqs	25	1
+N_seqs	24	1
+N_seqs	20	1
+N_seqs	19	2
+N_seqs	17	2
+N_seqs	16	2
+N_seqs	15	2
+N_seqs	14	1
+N_seqs	13	1
+N_seqs	12	1
+N_seqs	10	5
+N_seqs	9	9
+N_seqs	8	10
+N_seqs	7	17
+N_seqs	6	30
+N_seqs	5	46
+N_seqs	4	125
+N_seqs	3	273
+N_seqs	2	2903
+N_seqs	1	1
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-1	30	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-2	27	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-3	26	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-4	25	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-5	24	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-6	20	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-7	19	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-8	19	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-9	17	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-10	17	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-11	16	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-12	16	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-13	15	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-14	15	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-15	14	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-16	13	removed
+#TIME-Wed Aug  2 15:08:30 2023
+LARGE-17	12	removed
+#TIME-Wed Aug  2 15:08:30 2023
+F_clust	total-clusters: total number of clusters	3436
+F_clust	seq_under_max_len: total sequences shorter than length cutoff 15000	8190
+F_clust	max_sequences: clusters with fewer than 10 sequences	3418
+F_clust	min_taxa: clusters with more than 2 taxa	3403
+F_clust	taxa_mean: clusters with fewer than 9 seqs per taxon	3403
+F_clust	single_copy_gene: clusters of a single copy ortholog	2902
+F_clust	paralogous_gene: clusters with more than one copy in any taxon	501
+F_clust	single_species: cluster has only one taxon	15
+#TIME-Wed Aug  2 15:08:30 2023
+# found 2 total taxa
+#TIME-Wed Aug  2 15:08:30 2023
+N_genes	Dmel6	4113
+N_genes	iyBomTerr1	3752
+#TIME-Wed Aug  2 15:08:30 2023
+N_ortho	Dmel6	2902
+N_ortho	iyBomTerr1	2902
+#TIME-Wed Aug  2 15:08:30 2023
+N_taxa	2	3403
+N_taxa	1	15
+#TIME-Wed Aug  2 15:08:30 2023
+#TIME-Process completed in 0.0 minutes
+## Great success!!:  Wed Aug  2 15:08:30 2023

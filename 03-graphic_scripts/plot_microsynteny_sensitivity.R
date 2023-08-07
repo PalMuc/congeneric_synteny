@@ -158,6 +158,8 @@ text(2e-4,1200, "z-length\ncutoff\n26kb")
 points(mean(ig_distance3)/dmagna_genome_size,1000, pch=6, col="#220a7eaa", lwd=4)
 points(mean(ig_distance4)/dpulex_genome_size,600, pch=6, col="#520aaeaa", lwd=4)
 text(2.3e-5,1700, "mean\n3.2kb")
+mtext("A", side = 2, line = 1, at = max(ig_h4$counts)*1.2, cex = 2, las=1)
+
 # crassostrea
 plot( ig_h8$mids/cvir_genome_size, ig_h8$counts , type="n", log="x",
       xlab="Intergenic distance / genome size (log)",
@@ -173,6 +175,8 @@ text(2e-4,600, "z-length\ncutoff\n136kb")
 points(mean(ig_distance7)/cang_genome_size,600, pch=6, col="#ec60bdaa", lwd=4)
 points(mean(ig_distance8)/cvir_genome_size,700, pch=6, col="#bc206daa", lwd=4)
 text(1.2e-5,1100, "mean\n8.9kb")
+mtext("B", side = 2, line = 1, at = max(ig_h8$counts)*1.2, cex = 2, las=1)
+
 # octopus
 plot( ig_h6$mids/osin_genome_size, ig_h6$counts , type="n", log="x",
       xlab="Intergenic distance / genome size (log)",
@@ -188,6 +192,8 @@ text(2e-4,500, "z-length\ncutoff\n506kb")
 points(mean(ig_distance5)/obi_genome_size,300, pch=6, col="#590aacaa", lwd=4)
 points(mean(ig_distance6)/osin_genome_size,400, pch=6, col="#a20aeeaa", lwd=4)
 text(3e-5,700, "mean\n67kb")
+mtext("C", side = 2, line = 1, at = max(ig_h6$counts)*1.2, cex = 2, las=1)
+
 # tuna
 plot( ig_h1$mids/talb_genome_size, ig_h1$counts , type="n", log="x",
       xlab="Intergenic distance / genome size (log)",
@@ -203,6 +209,7 @@ text(2e-4,800, "z-length\ncutoff\n156kb")
 points(mean(ig_distance1)/tmac_genome_size,800, pch=6, col="#0a4facaa", lwd=4)
 points(mean(ig_distance2)/talb_genome_size,600, pch=6, col="#3a4fecaa", lwd=4)
 text(1.3e-5,1200, "mean\n10.2kb")
+mtext("D", side = 2, line = 1, at = max(ig_h1$counts)*1.2, cex = 2, las=1)
 dev.off()
 
 

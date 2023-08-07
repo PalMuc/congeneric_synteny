@@ -29,10 +29,13 @@ pair_genus_names = c("Tethya wilhelma-minuta", "Acropora hyacinthus-millepora", 
                      "Bufo gargarizans-bufo", "Cervus hanglu-elaphus",
                      "Perca flavescens-fluviatilis", "Epinephelus fuscoguttatus-lanceolatum", "Epinephelus fuscoguttatus-moara", 
                      "Oreochromis aureus-niloticus", "Thunnus maccoyii-albacares" )
+letter_list = unlist(strsplit("ABCDEFGHIJKLMNOPQRSTUVWXYZ",""))
+
+
 
 # make PDF
 pdf(file = "~/git/speciation_synteny/supplements_for_paper/microsynteny_blocks_overview_v1.pdf" , width = 8, height = 10, paper = "a4")
-par(mfrow=c(4,2), mar=c(4.5,4.5,3,1))
+par(mfrow=c(4,2), mar=c(4.5,4.5,4,1))
 # loop through each species, and make 1/8-page-size plot
 for (i in 1:(length(ms_file_list))){
     blockdata = read.table(paste0("~/git/speciation_synteny/05-microsynteny_plots/", ms_file_list[i]), 
@@ -64,6 +67,7 @@ for (i in 1:(length(ms_file_list))){
     bc_lm = lm( log10(counttable_hist) ~ log10(as.integer(names(counttable_hist))) )
     text(2,2,paste("R2 =",round(bcor2,digits = 3)), pos=4, cex=1.2)
     abline(bc_lm, lty=2, lwd=4, col="#00000066", untf=FALSE)
+    mtext(letter_list[i], side = 3, line = 2, at = 1, cex = 2)
 }
 dev.off()
 

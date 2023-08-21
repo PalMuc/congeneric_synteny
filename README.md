@@ -6,7 +6,7 @@ For each pair of genomes (congeneric species), microsynteny and macrosynteny are
 
 The pipeline processor [run_synteny_analysis.py](https://github.com/PalMuc/speciation_synteny/blob/main/02-processing_scripts/run_synteny_analysis.py) is coded in Python, and run simply as:
 
-`../run_synteny_analysis.py -i ../species_pair_list.tab`
+`run_synteny_analysis.py -i species_pair_list.tab`
 
 For each species pair, for example the tuna, this begins with the scaffolds, proteins, and GFF downloaded from [NCBI](https://www.ncbi.nlm.nih.gov/genome/?term=txid8240[orgn]):
 

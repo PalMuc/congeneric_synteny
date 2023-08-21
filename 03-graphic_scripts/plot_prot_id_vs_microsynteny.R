@@ -43,10 +43,13 @@ pair_genus_names = c("Tethya", "Acropora", "Octopus", "Crassostrea", "", "Daphni
                      "Placozoa", "Hexactinellida",
                      "","","","Mammal","Mammal","Mammal")
 
+fraction_macro = id_clust_data$on_main_scaf / (id_clust_data$on_main_scaf + id_clust_data$off_main_scaf)
+fraction_micro = id_clust_data$t_gene / id_clust_data$t_total
+
 #
 pdf(file = "~/git/speciation_synteny/figures_for_paper/sp_pair_identity_vs_microsyn_v4.pdf", width = 5, height = 5)
 par(mar=c(4.5,4.5,1,1))
-plot(id_clust_data$prot_id, id_clust_data$t_gene / id_clust_data$t_total,
+plot(id_clust_data$prot_id, fraction_micro,
      xlim = c(0.45,1), ylim = c(0,1), frame.plot = FALSE,
      xlab = "Average pairwise protein identity",
      ylab = "Fraction of microsyntenic genes",
@@ -56,27 +59,47 @@ plot(id_clust_data$prot_id, id_clust_data$t_gene / id_clust_data$t_total,
 segments(0.5,0,0.84,1, col="#00000044", lty=2)
 #abline(a = -1.470588 , b = 2.94, col="#00000044", lty=2)
 #abline(a = -1.870588 , b = 2.94, col="#00000044", lty=2)
-text(id_clust_data$prot_id, id_clust_data$t_gene / id_clust_data$t_total,
+text(id_clust_data$prot_id, fraction_micro,
      pair_genus_names, pos = 2, font = c(rep(3,22),rep(1,12)), col = pair_color_list.no_alpha)
 dev.off()
 
 pdf(file = "~/git/speciation_synteny/figures_for_paper/sp_macrosyn_vs_microsyn_v4.pdf", width = 5, height = 5)
 par(mar=c(4.5,4.5,1,1))
-plot( id_clust_data$on_main_scaf / (id_clust_data$on_main_scaf + id_clust_data$off_main_scaf), 
-      id_clust_data$t_gene / id_clust_data$t_total ,
+plot( fraction_macro, fraction_micro ,
       xlim = c(0,1), ylim = c(0,1), frame.plot = FALSE,
       xlab = "Fraction of macrosyntenic genes",
       ylab = "Fraction of microsyntenic genes",
       pch = 16, col=pair_color_list, cex=3,
       cex.axis =1.3, cex.lab=1.3)
-text(id_clust_data$on_main_scaf / (id_clust_data$on_main_scaf + id_clust_data$off_main_scaf), 
-     id_clust_data$t_gene / id_clust_data$t_total,
+text(fraction_macro, fraction_micro,
      pair_genus_names, pos = 2, font = c(rep(3,22),rep(1,12)), col = pair_color_list.no_alpha)
 dev.off()
 
-fraction_macro = id_clust_data$on_main_scaf / (id_clust_data$on_main_scaf + id_clust_data$off_main_scaf)
-fraction_micro = id_clust_data$t_gene / id_clust_data$t_total
+################################################################################
 
+# supplemental figure showing divergence time
+pdf(file = "~/git/speciation_synteny/supplements_for_paper/sp_pair_identity_vs_div_time_v2.pdf", width = 10, height = 5)
+par(mfrow=c(1,2), mar=c(4.5,4.5,3,1))
+plot(id_clust_data$prot_id, id_clust_data$div_time,
+     xlim = c(0.5,1), ylim = c(350,0), frame.plot = FALSE,
+     xlab = "Average pairwise protein identity",
+     ylab = "Estimated divergence time (Ma)",
+     #ylab = "Fraction of genes in microsyntenic blocks (3 or more)",
+     pch = 16, col=pair_color_list, cex=3,
+     cex.axis =1.3, cex.lab=1.3)
+text(id_clust_data$prot_id, id_clust_data$div_time,
+     pair_genus_names, pos = 2, font = c(rep(3,22),rep(1,12)), col = pair_color_list.no_alpha)
+mtext("A", side = 3, line = 1, at = 0.4, cex = 2)
+plot(fraction_micro, id_clust_data$div_time,
+     xlim = c(0,1), ylim = c(350,0), frame.plot = FALSE,
+     ylab = "Estimated divergence time (Ma)",
+     xlab = "Fraction of macrosyntentic genes",
+     pch = 16, col=pair_color_list, cex=3,
+     cex.axis =1.3, cex.lab=1.3)
+text(fraction_micro, id_clust_data$div_time,
+     pair_genus_names, pos = c(rep(2,22),rep(4,13)), font = c(rep(3,22),rep(1,12)), col = pair_color_list.no_alpha)
+mtext("B", side = 3, line = 1, at = -0.1, cex = 2)
+dev.off()
 
 
 ################################################################################

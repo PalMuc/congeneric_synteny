@@ -113,6 +113,14 @@ makehomologs.py -i Tmi_V4b17_hintsutr_vs_TwiV4_AUG.blastp.n.tab -f augustus.hint
 
 ```
 
+## Placozoa ##
+Using [*Hoilungia hongkongensis*](https://bitbucket.org/molpalmuc/hoilungia-genome/src/master/) and [*Trichoplax adhaerens* redo](https://bitbucket.org/wrf/genome-reannotations/src/master/jbrowse-tracks/trichoplax/) by [Eitel et al 2018](https://doi.org/10.1371/journal.pbio.2005359)
+
+```
+for FILE in 6554-orthogs_proteins_alignments/*.fasta ; do alignment_conserved_site_to_dots.py -n -t -a $FILE >> hoilungia_v_trichoplax.homologs_identity.tab ; done
+
+```
+
 ## Hexactinellida ##
 Using [*Aphrocallistes vastus*](https://github.com/PalMuc/Aphrocallistes_vastus_genome) by [Francis et al 2023](https://doi.org/10.1098/rsos.230423) and [*Oopsacas minuta*](https://www.ncbi.nlm.nih.gov/datasets/taxonomy/111878/) by [Santini et al 2023](https://doi.org/10.1186/s12915-023-01619-w)
 

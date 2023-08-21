@@ -62,10 +62,10 @@ def parse_gtf(gtffile):
 
 	if gtffile.rsplit('.',1)[-1]=="gz": # autodetect gzip format
 		opentype = gzip.open
-		sys.stderr.write("# Parsing protein fasta {} as gzipped  {}\n".format(gtffile, time.asctime() ) )
+		sys.stderr.write("# Parsing GFF file {} as gzipped  {}\n".format(gtffile, time.asctime() ) )
 	else: # otherwise assume normal open for fasta format
 		opentype = open
-		sys.stderr.write("# Parsing protein fasta {}  {}\n".format(gtffile, time.asctime() ) )
+		sys.stderr.write("# Parsing GFF file {}  {}\n".format(gtffile, time.asctime() ) )
 	for line in opentype(gtffile, 'rt'):
 		line = line.strip()
 		if line and not line[0]=="#": # ignore empty lines and comments

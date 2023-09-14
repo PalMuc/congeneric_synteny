@@ -11,9 +11,30 @@ homolog_id_cols = c("target", "taxon", "gaps", "gap_pct",
                     "ids_diffs", "q_gaps", "s_gaps")
 
 id_file_list_dir = dir( "~/git/speciation_synteny/06-prot_id_tables/", "*.homologs_identity.tab.gz", recursive = TRUE)
-id_file_list = id_file_list_dir[c(33,1,31,6,8,5,17,2,9,12,14,13,
-                                  27,4,28,29,3,7,32,18,19,30,20)]
-
+#id_file_list = id_file_list_dir[c(33,1,31,6,8,5,17,2,9,12,14,13,  27,4,28,29,3,7,32,18,19,30,20)]
+id_file_list = c("Tmi_V4b17_hintsutr_vs_TwiV4_AUG.homologs_identity.tab.gz", 
+               "AhyaV1_vs_Amilv2.homologs_identity.tab.gz", 
+               "Obi_vs_Osi.homologs_identity.tab.gz", 
+               "Cang_vs_Cvir3.homologs_identity.tab.gz", 
+               "Cgig1_vs_Cvir3.homologs_identity.tab.gz", 
+               "Cang_vs_Cgig1.homologs_identity.tab.gz", 
+               "Dpul_vs_Dmag.homologs_identity.tab.gz", 
+               "AnaObli1_vs_AnaLude1.homologs_identity.tab.gz", 
+               "Cqui1_vs_CPPV2.homologs_identity.tab.gz", 
+               "Dmel6_vs_DereRS2.homologs_identity.tab.gz", 
+               "Dmel6_vs_DpseMV25.homologs_identity.tab.gz", 
+               "Dmel6_vs_Dgrim.homologs_identity.tab.gz", 
+               "iyVesCrab1_vs_iVesVel2.homologs_identity.tab.gz", 
+               "Bpyro_vs_iyBomTerr1.homologs_identity.tab.gz", 
+               "Lvar3_vs_Lpic2.homologs_identity.tab.gz", 
+               "Mreeves_vs_Mmutica.homologs_identity.tab.gz", 
+               "Bgarg_vs_aBufBuf1.homologs_identity.tab.gz", 
+               "Ccan_vs_mCerEla1.homologs_identity.tab.gz", 
+               "PFLA1_vs_Pfluv1.homologs_identity.tab.gz", 
+               "Efusco_vs_Elanceo.homologs_identity.tab.gz", 
+               "Efusco_vs_Emoara.homologs_identity.tab.gz", 
+               "OaurZZ_vs_OnilUMD.homologs_identity.tab.gz", 
+               "fThuAlb1_vs_fThuMac1.homologs_identity.tab.gz")
 pair_genus_names = c("Tethya wilhelma-minuta", "Acropora hyacinthus-millepora", "Octopus bimaculoides-sinensis", 
                      "Crassostrea angulata-virginica", "Crassostrea gigas-virginica", "Crassostrea angulata-gigas",
                      "Daphnia pulex-magna", "Anastrepha obliqua-ludens", "Culex quinquefasciatus-pipiens", 

@@ -87,14 +87,14 @@ dev.off()
 
 ################################################################################
 
-pdf(file = "~/git/speciation_synteny/supplements_for_paper/sp_percent_id_histograms_v1.pdf", width = 8, height = 10, paper = "a4")
+pdf(file = "~/git/speciation_synteny/supplements_for_paper/sp_percent_id_histograms_v2.pdf", width = 8, height = 10, paper = "a4")
 par(mfrow=c(4,2), mar=c(4.5,4.5,4,1) )
 for (i in 1:length(id_file_list) ){
   cluster_id = read.table( paste0("~/git/speciation_synteny/06-prot_id_tables/",id_file_list[i]), 
                            header = FALSE, sep = "\t", col.names = homolog_id_cols, stringsAsFactors = FALSE)
   id_pct_no_gap = 100*round(sort( cluster_id$identities/(cluster_id$identities + cluster_id$differences) , decreasing = TRUE), digits = 3)
   protein_id_table = table(id_pct_no_gap)
-  
+  protein_id_mean = mean(id_pct_no_gap)
   plot( names(protein_id_table), protein_id_table, type = 'l', 
         xlim = c(100,30), main = pair_genus_names[i], font.main=4,
         xlab = "Percent protein identity", ylab = "N protein pairs",
@@ -102,6 +102,8 @@ for (i in 1:length(id_file_list) ){
         axes = FALSE , cex.lab=1.4  )
   axis(1,cex.axis = 1.3)
   axis(2,cex.axis = 1.3)
+  segments(protein_id_mean, 0, protein_id_mean, max(protein_id_table), lwd = 2, lty=2, col = "#00000066")
+  text(protein_id_mean, max(protein_id_table) * 0.9, paste("Mean:",round(protein_id_mean, digits = 3)), pos=4 )
   mtext(letter_list[i], side = 3, line = 2, at = 111, cex = 2)
 }
 dev.off()

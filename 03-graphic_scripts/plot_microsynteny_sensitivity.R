@@ -110,6 +110,8 @@ ig_distance1 = sort(intergenic_data1$V5)
 ig_distance2 = sort(intergenic_data2$V5)
 ig_h1 = hist(ig_distance1, breaks = 2000)
 ig_h2 = hist(ig_distance2, breaks = 2000)
+talb_genome_size = 792101331
+tmac_genome_size = 782423979
 
 #table(ig_distance1 > tmac_genome_size/5000)
 # FALSE  TRUE 
@@ -130,6 +132,7 @@ ig_distance5 = sort(intergenic_data5$V5)
 ig_distance6 = sort(intergenic_data6$V5)
 ig_h5 = hist(ig_distance5, breaks = 10000)
 ig_h6 = hist(ig_distance6, breaks = 10000)
+obi_genome_size = 2342534168
 osin_genome_size = 2719151902
 
 intergenic_data7 = read.table("~/git/speciation_synteny/summary_data/GCF_025612915.1_ASM2561291v2_genomic.intergenic.tab.gz", header = FALSE, sep = "\t")
@@ -146,7 +149,7 @@ par(mfrow=c(2,2) )
 # daphnia
 plot( ig_h4$mids/dmagna_genome_size, ig_h4$counts , type="n", log="x",
       xlab="Intergenic distance / genome size (log)",
-      ylab="Number of introns",
+      ylab="Number of intergenic regions",
       cex.lab=1.4, cex.axis=1.0)
 segments(ig_h3$mids/dmagna_genome_size, rep(0,length(ig_h3$counts)), 
          ig_h3$mids/dmagna_genome_size, ig_h3$counts, lwd=3, col="#220a7eaa")
@@ -163,7 +166,7 @@ mtext("A", side = 2, line = 1, at = max(ig_h4$counts)*1.2, cex = 2, las=1)
 # crassostrea
 plot( ig_h8$mids/cvir_genome_size, ig_h8$counts , type="n", log="x",
       xlab="Intergenic distance / genome size (log)",
-      ylab="Number of introns",
+      ylab="Number of intergenic regions",
       cex.lab=1.4, cex.axis=1.0)
 segments(ig_h7$mids/cang_genome_size, rep(0,length(ig_h7$counts)), 
          ig_h7$mids/cang_genome_size, ig_h7$counts, lwd=3, col="#ec60bdaa")
@@ -180,7 +183,7 @@ mtext("B", side = 2, line = 1, at = max(ig_h8$counts)*1.2, cex = 2, las=1)
 # octopus
 plot( ig_h6$mids/osin_genome_size, ig_h6$counts , type="n", log="x",
       xlab="Intergenic distance / genome size (log)",
-      ylab="Number of introns",
+      ylab="Number of intergenic regions",
       cex.lab=1.4, cex.axis=1.0)
 segments(ig_h5$mids/obi_genome_size, rep(0,length(ig_h5$counts)), 
          ig_h5$mids/obi_genome_size, ig_h5$counts, lwd=3, col="#590aacaa")
@@ -197,7 +200,7 @@ mtext("C", side = 2, line = 1, at = max(ig_h6$counts)*1.2, cex = 2, las=1)
 # tuna
 plot( ig_h1$mids/talb_genome_size, ig_h1$counts , type="n", log="x",
       xlab="Intergenic distance / genome size (log)",
-      ylab="Number of introns",
+      ylab="Number of intergenic regions",
       cex.lab=1.4, cex.axis=1.0)
 segments(ig_h1$mids/tmac_genome_size, rep(0,length(ig_h1$counts)), 
          ig_h1$mids/tmac_genome_size, ig_h1$counts, lwd=3, col="#0a4facaa")

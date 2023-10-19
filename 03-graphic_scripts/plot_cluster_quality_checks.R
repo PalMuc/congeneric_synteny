@@ -108,6 +108,32 @@ for (i in 1:length(id_file_list) ){
 }
 dev.off()
 
+cras_dmel_numbers = c(6,4,5,10,11,12)
+id_file_subset = id_file_list[cras_dmel_numbers]
+pair_genus_subset = c( "Crassostrea angulata-gigas", "Crassostrea angulata-virginica", "Crassostrea gigas-virginica",
+                      "Drosophila melanogaster-\nerecta", "Drosophila melanogaster-\npseudoobscura", "Drosophila melanogaster-\ngrimshawi" )
+
+pdf(file = "~/git/speciation_synteny/figures_for_paper/cras_dmel_percent_id_histograms_v1.pdf", width = 8, height = 6 )
+par(mfrow=c(2,3), mar=c(4.5,4.5,4,1) )
+for (i in 1:length(id_file_subset) ){
+  cluster_id = read.table( paste0("~/git/speciation_synteny/06-prot_id_tables/",id_file_subset[i]), 
+                           header = FALSE, sep = "\t", col.names = homolog_id_cols, stringsAsFactors = FALSE)
+  id_pct_no_gap = 100*round(sort( cluster_id$identities/(cluster_id$identities + cluster_id$differences) , decreasing = TRUE), digits = 3)
+  protein_id_table = table(id_pct_no_gap)
+  protein_id_mean = mean(id_pct_no_gap)
+  plot( names(protein_id_table), protein_id_table, type = 'l', 
+        xlim = c(100,30), main = pair_genus_subset[i], font.main=4,
+        xlab = "Percent protein identity", ylab = "N protein pairs",
+        lwd=3, col = pair_color_list[cras_dmel_numbers][i],
+        axes = FALSE , cex.lab=1.4  )
+  axis(1,cex.axis = 1.3)
+  axis(2,cex.axis = 1.3)
+  segments(protein_id_mean, 0, protein_id_mean, max(protein_id_table), lwd = 2, lty=2, col = "#00000066")
+  text(protein_id_mean, max(protein_id_table) * 0.9, paste("Mean:",round(protein_id_mean, digits = 3)), pos=4 )
+  mtext(letter_list[i], side = 3, line = 1, at = 116, cex = 2)
+}
+dev.off()
+
 
 ################################################################################
 

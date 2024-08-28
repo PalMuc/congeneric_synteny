@@ -1,4 +1,18 @@
-# Genomic changes are varied across congeneric species pairs #
+### This is the data repository for the following publication 
+
+## Genomic changes are varied across congeneric species pairs
+
+###  Francis, Warren R.<sup>1</sup>, Vargas, Sergio<sup>1</sup>, Wörheide, Gert <sup>1,2,3,*</sup>
+
+<sup>1</sup> Department of Earth and Environmental Sciences, Paleontology and Geobiology, Ludwig-Maximilians-Universität München, Munich, Germany.<br>
+<sup>2</sup> GeoBio-Center, Ludwig-Maximilians-Universität München, Munich, Germany<br>
+<sup>3</sup> Staatliche Naturwissenschaftliche Sammlungen Bayerns (SNSB)–Bayerische Staatssammlung für Paläontologie und Geologie, Munich, Germany<br>
+
+
+*corresponding author
+
+### ABSTRACT <br>
+Synteny, the shared arrangement of genes on chromosomes between related species, is a marker of shared ancestry, and synteny-breaking events can result in genomic incompatibilities between populations and ultimately lead to speciation events. Despite its pivotal role as a driver of speciation, the role of synteny breaks on speciation is poorly studied due to a lack of chromosome-level genome assemblies for a taxonomically broad sample of organisms. Here, using 22 con-generic animal genome pairs, we find a link between protein identity, microsynteny, and macrosynteny, but no evidence for a universal path of genomic change during speciation. We observed varied trajectories of synteny conservation relative to protein identity in non-model organisms, with many species’ pairs showing no karyotypic changes and others displaying large genomic rearrangements. This contrasts with previous studies on model organisms and indicates that the genomic changes preceding or resulting from speciation are likely very contextual between clades.
 
 
 ### Analytical approach ###

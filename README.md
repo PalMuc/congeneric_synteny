@@ -1,4 +1,4 @@
-# Variable genomic trajectories of speciation across animals #
+# Genomic changes are varied across congeneric species pairs #
 
 
 ### Analytical approach ###

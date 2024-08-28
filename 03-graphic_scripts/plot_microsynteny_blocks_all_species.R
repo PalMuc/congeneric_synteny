@@ -5,10 +5,11 @@
 
 
 ms_file_list_dir = dir( "~/git/speciation_synteny/05-microsynteny_plots/", "*.microsynteny.*tab.gz", recursive = TRUE)
-ms_file_list = ms_file_list_dir[c(33,1,31,6,8,5,17,2,9,12,14,13,
+ms_file_list = ms_file_list_dir[c(1,31,6,8,5,17,2,9,12,14,13,
              27,4,28,29,3,7,32,18,19,30,20)]
 
-pair_color_list = c("#a0e499aa", "#ac0a18aa", "#590aacaa", "#ec60bdaa", "#ec60bdaa", "#ec60bdaa", "#220a7eaa",
+pair_color_list = c(#"#a0e499aa", 
+                    "#ac0a18aa", "#590aacaa", "#ec60bdaa", "#ec60bdaa", "#ec60bdaa", "#220a7eaa",
                     "#2ecd14aa", "#44cd14aa", "#cd9714aa", "#cd9714aa", "#cd9714aa", 
                     "#ac0a18aa", "#cd1f14aa",
                     "#0da730aa", "#a6ab09aa", "#ab099daa", "#9fcd1aaf",
@@ -20,7 +21,8 @@ block_headers = c("q_scaffold", "s_scaffold", "block_ID",
                   "q_gene_ID", "q_gene_pos_start", "q_gene_pos_end", "q_gene_strand", 
                   "s_gene_ID", "s_gene_pos_start", "s_gene_pos_end", "s_gene_strand", 
                   "bitscore" )
-pair_genus_names = c("Tethya wilhelma-minuta", "Acropora hyacinthus-millepora", "Octopus bimaculoides-sinensis", 
+pair_genus_names = c(#"Tethya wilhelma-minuta", 
+                     "Acropora hyacinthus-millepora", "Octopus bimaculoides-sinensis", 
                      "Crassostrea angulata-virginica", "Crassostrea gigas-virginica", "Crassostrea angulata-gigas",
                      "Daphnia pulex-magna", "Anastrepha obliqua-ludens", "Culex quinquefasciatus-pipiens", 
                      "Drosophila melanogaster-erecta", "Drosophila melanogaster-pseudoobscura", "Drosophila melanogaster-grimshawi", 
@@ -34,7 +36,7 @@ letter_list = unlist(strsplit("ABCDEFGHIJKLMNOPQRSTUVWXYZ",""))
 
 
 # make PDF
-pdf(file = "~/git/speciation_synteny/supplements_for_paper/microsynteny_blocks_overview_v1.pdf" , width = 8, height = 10, paper = "a4")
+pdf(file = "~/git/speciation_synteny/supplements_for_paper/microsynteny_blocks_overview_v2.pdf" , width = 8, height = 10, paper = "a4")
 par(mfrow=c(4,2), mar=c(4.5,4.5,4,1))
 # loop through each species, and make 1/8-page-size plot
 for (i in 1:(length(ms_file_list))){

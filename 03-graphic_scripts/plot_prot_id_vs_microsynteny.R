@@ -3,8 +3,10 @@
 
 
 id_clust_data = read.table("~/git/speciation_synteny/summary_data/identity_and_microsynteny_pairwise.tab", header =TRUE, sep = "\t")
+id_clust_data = id_clust_data[2:dim(id_clust_data)[1],]
 
-pair_color_list = c( "#a0e499aa", "#ac0a18aa", "#590aacaa", "#ec60bdaa", "#ec60bdaa", "#220a7eaa",
+pair_color_list = c( #"#a0e499aa", 
+                     "#ac0a18aa", "#590aacaa", "#ec60bdaa", "#ec60bdaa", "#220a7eaa",
                      rep("#cd9714aa",8),
                      rep("#ab099daa",3),
                      rep("#098eabaa",5), 
@@ -17,7 +19,8 @@ pair_color_list.no_alpha = substr(pair_color_list,1,7) # trim alpha
 plot(id_clust_data[,3:23],
      pch = 16, col=pair_color_list, cex=2 )
 
-pair_genus_names = c("Tethya", "Acropora", "Octopus", "Crassostrea", "Crassostrea", "Daphnia", 
+pair_genus_names = c(#"Tethya", 
+                     "Acropora", "Octopus", "Crassostrea", "Crassostrea", "Daphnia", 
                      "Anastrepha", "Culex", "Drosophila", "", "Drosophila", "Vespa", "Bombus", 
                      "Lytechinus", "Mauremys", "Bufo", "Cervus",
                      "Perca", "Epinephelus", "", "Oreochromis", "Thunnus",
@@ -26,7 +29,8 @@ pair_genus_names = c("Tethya", "Acropora", "Octopus", "Crassostrea", "Crassostre
                      "","","","","","")
                      #"H-C", "H-G", "H-P", "H-N", "H-M", "H-O" )
 
-pair_genus_names = c("Tethya", "Acropora", "Octopus", "Crassostrea", "", "Daphnia", 
+pair_genus_names = c(#"Tethya", 
+                     "Acropora", "Octopus", "Crassostrea", "", "Daphnia", 
                      "", "", "Drosophila", "", "Drosophila", "", "", 
                      "", "", "", "",
                      "", "", "", "", "Thunnus",
@@ -38,7 +42,7 @@ fraction_macro = id_clust_data$on_main_scaf / (id_clust_data$on_main_scaf + id_c
 fraction_micro = id_clust_data$t_gene / id_clust_data$t_total
 
 #
-pdf(file = "~/git/speciation_synteny/figures_for_paper/sp_pair_identity_vs_microsyn_v4.pdf", width = 5, height = 5, useDingbats = FALSE)
+pdf(file = "~/git/speciation_synteny/figures_for_paper/sp_pair_identity_vs_microsyn_v5.pdf", width = 5, height = 5, useDingbats = FALSE)
 par(mar=c(4.5,4.5,1,1))
 plot(id_clust_data$prot_id, fraction_micro,
      xlim = c(0.45,1), ylim = c(0,1), frame.plot = FALSE,
@@ -54,7 +58,7 @@ text(id_clust_data$prot_id, fraction_micro,
      pair_genus_names, pos = 2, font = c(rep(3,22),rep(1,12)), col = pair_color_list.no_alpha)
 dev.off()
 
-pdf(file = "~/git/speciation_synteny/figures_for_paper/sp_macrosyn_vs_microsyn_v4.pdf", width = 5, height = 5, useDingbats = FALSE)
+pdf(file = "~/git/speciation_synteny/figures_for_paper/sp_macrosyn_vs_microsyn_v5.pdf", width = 5, height = 5, useDingbats = FALSE)
 par(mar=c(4.5,4.5,1,1))
 plot( fraction_macro, fraction_micro ,
       xlim = c(0,1), ylim = c(0,1), frame.plot = FALSE,
@@ -66,7 +70,7 @@ text(fraction_macro, fraction_micro,
      pair_genus_names, pos = 2, font = c(rep(3,22),rep(1,12)), col = pair_color_list.no_alpha)
 dev.off()
 
-pdf(file = "~/git/speciation_synteny/figures_for_paper/sp_pair_identity_vs_macrosyn_v4.pdf", width = 5, height = 5, useDingbats = FALSE)
+pdf(file = "~/git/speciation_synteny/figures_for_paper/sp_pair_identity_vs_macrosyn_v5.pdf", width = 5, height = 5, useDingbats = FALSE)
 par(mar=c(4.5,4.5,1,1))
 plot(id_clust_data$prot_id, fraction_macro,
      xlim = c(0.45,1), ylim = c(0,1), frame.plot = FALSE,

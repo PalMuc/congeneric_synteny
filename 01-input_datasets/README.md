@@ -91,27 +91,6 @@ for FILE in clusters_acropora_clusters_v1/*.fasta ; do BASE="${FILE%.fasta}" ; m
 for FILE in clusters_acropora_clusters_v1/homologs_acropora_clusters_v1_*.aln ; do alignment_conserved_site_to_dots.py -t -n -a $FILE >> AhyaV1_vs_Amilv2.homologs_identity.tab ; done
 ```
 
-## *Tethya* ##
-
-```
-~/git/genomeGTFtools/misc/augustus_to_gff3.py augustus.gff > augustus.hints_utr.no_comment.gff
-getgtfscaffolds.py -s TmiV4_sponge_bin.17.nr.names -g augustus.hints_utr.no_comment.gff > augustus.hints_utr.no_comment.nr.gff
-
-~/diamond-v2.0.13/diamond-v2.0.13 blastp -q augustus.hints_utr.aa.fasta -d TwilhelmaV4_AUGUSTUS_predicted_genes_below_50_perc.rnum.no_comment.prot.fasta -o Tmi_V4b17_hintsutr_vs_TwiV4_AUG.blastp.tab
-
-~/git/genomeGTFtools/scaffold_synteny.py -b Tmi_V4b17_hintsutr_vs_TwiV4_AUG.blastp.tab -q augustus.hints_utr.no_comment.gff -d TwilhelmaV4_AUGUSTUS_predicted_genes_below_50_perc.rnum.no_comment.gff -f TmiV4_sponge_bin.17.nr.fa -F Tethya_wilhelma_V4_P_RNA_scaffold.rnum.fasta -E duplicate_scaffolds_to_exclude.names -l 90 -L 120 > Tmi_V4b17_hintsutr_vs_TwiV4_AUG.blastp.synteny.tab
-Rscript ~/git/genomeGTFtools/synteny_2d_plot.R Tmi_V4b17_hintsutr_vs_TwiV4_AUG.blastp.synteny.tab Tethya-minuta Tethya-wilhelma 120
-
-~/git/genomeGTFtools/microsynteny.py -b Tmi_V4b17_hintsutr_vs_TwiV4_AUG.blastp.tab -q augustus.hints_utr.no_comment.gff -d TwilhelmaV4_AUGUSTUS_predicted_genes_below_50_perc.rnum.no_comment.gff -E duplicate_scaffolds_to_exclude.names -T > Tmi_V4b17_hintsutr_vs_TwiV4_AUG.microsynteny.T.tab
-Rscript ~/git/genomeGTFtools/synteny_block_length_plot.R Tmi_V4b17_hintsutr_vs_TwiV4_AUG.microsynteny.T.tab 0.45
-
-grep mRNA augustus.hints_utr.no_comment.nr.gff | cut -f 9 | cut -d ";" -f 1 | cut -d "=" -f 2 > augustus.hints_utr.aa.nr.names
-getAinB.py augustus.hints_utr.aa.nr.names augustus.hints_utr.aa.fasta > augustus.hints_utr.aa.nr.fasta
-fastarenamer.py -p "Tmin" -j "|" augustus.hints_utr.aa.nr.fasta > augustus.hints_utr.aa.nr.n.fasta
-fastarenamer.py -p "Twil" -j "|" TwilhelmaV4_AUGUSTUS_predicted_genes_below_50_perc.rnum.no_comment.prot.fasta > TwilhelmaV4_AUGUSTUS_predicted_genes_below_50_perc.rnum.no_comment.prot.n.fasta
-makehomologs.py -i Tmi_V4b17_hintsutr_vs_TwiV4_AUG.blastp.n.tab -f augustus.hints_utr.aa.nr.n.fasta TwilhelmaV4_AUGUSTUS_predicted_genes_below_50_perc.rnum.no_comment.prot.n.fasta -p 234 -o tethya_clusters_v1 -z 2 -s 2 -M 10 -H 9 -c
-
-```
 
 ## Placozoa ##
 Using [*Hoilungia hongkongensis*](https://bitbucket.org/molpalmuc/hoilungia-genome/src/master/) and [*Trichoplax adhaerens* redo](https://bitbucket.org/wrf/genome-reannotations/src/master/jbrowse-tracks/trichoplax/) by [Eitel et al 2018](https://doi.org/10.1371/journal.pbio.2005359)

@@ -1,9 +1,13 @@
 # datasets for synteny analysis #
-
 Using additional code at [WRF's genomeGTFtools](https://github.com/wrf/genomeGTFtools), [WRF's sequence processing](https://bitbucket.org/wrf/sequences/)
 
+## base data table containing GCF accession numbers ##
+Because multiple assembly versions exist for some species, refer to the data table [species_pair_list.tab](https://github.com/PalMuc/congeneric_synteny/blob/main/02-processing_scripts/species_pair_list.tab) in the [02-processing_scripts folder](https://github.com/PalMuc/congeneric_synteny/tree/main/02-processing_scripts) for the precise `GCF_` accessions used. **NOTE: some of these accessions may not longer be the primary assembly for this species.**
+
 ## *Acropora* ##
-Using [*Acropora hyacinthus*](https://marinegenomics.oist.jp/ahya/viewer/download?project_id=91) and [*Acropora millepora*](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_013753865.1/) by [Shinzato et al 2021](https://doi.org/10.1093/molbev/msaa216)
+Using [*Acropora hyacinthus*](https://marinegenomics.oist.jp/ahya/viewer/download?project_id=91) and [*Acropora millepora*](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_013753865.1/) by [Shinzato et al 2021](https://doi.org/10.1093/molbev/msaa216). Several other draft genomes of *Acropora* species were available, but were not chromosome level.
+
+Below is the code to map the transcripts from one species to the other for gene prediction from the genome.
 
 ```
 ~/gffread-0.12.7.Linux_x86_64/gffread -g ahya.fasta -w ahya.nucl.fa ahya.gff
@@ -93,7 +97,9 @@ for FILE in clusters_acropora_clusters_v1/homologs_acropora_clusters_v1_*.aln ; 
 
 
 ## Placozoa ##
-Using [*Hoilungia hongkongensis*](https://bitbucket.org/molpalmuc/hoilungia-genome/src/master/) and [*Trichoplax adhaerens* redo](https://bitbucket.org/wrf/genome-reannotations/src/master/jbrowse-tracks/trichoplax/) by [Eitel et al 2018](https://doi.org/10.1371/journal.pbio.2005359)
+Using [*Hoilungia hongkongensis*](https://bitbucket.org/molpalmuc/hoilungia-genome/src/master/) and [*Trichoplax adhaerens* redo](https://bitbucket.org/wrf/genome-reannotations/src/master/jbrowse-tracks/trichoplax/) by [Eitel et al 2018](https://doi.org/10.1371/journal.pbio.2005359), for comparison. These species were classified as different (new) genera. This dataset was not used in the final publication.
+
+The folder containing `6554-orthogs_proteins_alignments` is in the supplement repository of [Eitel et al 2018](https://doi.org/10.1371/journal.pbio.2005359), in the [orthologs folder](https://bitbucket.org/molpalmuc/hoilungia-genome/src/master/orthologs/).
 
 ```
 for FILE in 6554-orthogs_proteins_alignments/*.fasta ; do alignment_conserved_site_to_dots.py -n -t -a $FILE >> hoilungia_v_trichoplax.homologs_identity.tab ; done
@@ -101,7 +107,7 @@ for FILE in 6554-orthogs_proteins_alignments/*.fasta ; do alignment_conserved_si
 ```
 
 ## Hexactinellida ##
-Using [*Aphrocallistes vastus*](https://github.com/PalMuc/Aphrocallistes_vastus_genome) by [Francis et al 2023](https://doi.org/10.1098/rsos.230423) and [*Oopsacas minuta*](https://www.ncbi.nlm.nih.gov/datasets/taxonomy/111878/) by [Santini et al 2023](https://doi.org/10.1186/s12915-023-01619-w)
+Using [*Aphrocallistes vastus*](https://github.com/PalMuc/Aphrocallistes_vastus_genome) by [Francis et al 2023](https://doi.org/10.1098/rsos.230423) and [*Oopsacas minuta*](https://www.ncbi.nlm.nih.gov/datasets/taxonomy/111878/) by [Santini et al 2023](https://doi.org/10.1186/s12915-023-01619-w). These are from two different orders, but display substantial synteny.
 
 ```
 zcat Avas.v1.29_annotations.prot.vs_oopsacas_gb.tab.gz | sed s/LOD99/"Omin|LOD99"/g | sed s/Avas/"Avas|Avas"/g > Avas.v1.29_annotations.prot.vs_oopsacas_gb.tab
@@ -117,7 +123,7 @@ for FILE in clusters_hexact_clusters_v1/homologs*.aln ; do alignment_conserved_s
 ## downloads from NCBI ##
 
 * [Octopus sinensis (East Asian common octopus)](https://www.ncbi.nlm.nih.gov/genome/?term=txid2607531[Organism:noexp])
-* [Genome assembly ASM119413v2 reference Octopus bimaculoides](https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_001194135.2/)
+* [Octopus bimaculoides Genome assembly ASM119413v2 reference](https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_001194135.2/)
 * [Crassostrea gigas (Pacific oyster)](https://www.ncbi.nlm.nih.gov/genome/10758)
 * [Crassostrea virginica (eastern oyster)](https://www.ncbi.nlm.nih.gov/genome/398)
 * [Crassostrea angulata (assembly ASM2561291v2)](https://www.ncbi.nlm.nih.gov/genome/12241)
@@ -134,6 +140,7 @@ for FILE in clusters_hexact_clusters_v1/homologs*.aln ; do alignment_conserved_s
 * [Cervus elaphus (red deer)](https://www.ncbi.nlm.nih.gov/genome/10790)
 * [Cervus canadensis](https://www.ncbi.nlm.nih.gov/genome/34916)
 * [Perca flavescens (yellow perch)](https://www.ncbi.nlm.nih.gov/genome/?term=txid8167[orgn])
+* [Perca fluviatilis (European perch)](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_010015445.1/)
 * [Epinephelus lanceolatus (giant grouper)](https://www.ncbi.nlm.nih.gov/genome/?term=txid310571[orgn])
 * [Epinephelus fuscoguttatus (brown-marbled grouper)](https://www.ncbi.nlm.nih.gov/genome/?term=txid293821[orgn])
 * [Epinephelus moara (kelp grouper)](https://www.ncbi.nlm.nih.gov/genome/?term=txid300413[orgn])

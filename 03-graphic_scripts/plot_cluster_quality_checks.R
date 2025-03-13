@@ -1,9 +1,9 @@
 # plot cluster quality checks
 # examining which species contribute more to gaps in the alignment
-# WRF 2023-07-26
+# WRF 2025-03-13
 
 ###
-# This script generates only supplemental figures
+# This script generates some supplemental figures, and one main figure
 ###
 
 homolog_id_cols = c("target", "taxon", "gaps", "gap_pct", 
@@ -37,7 +37,7 @@ id_file_list = c(#"Tmi_V4b17_hintsutr_vs_TwiV4_AUG.homologs_identity.tab.gz",
                "fThuAlb1_vs_fThuMac1.homologs_identity.tab.gz")
 pair_genus_names = c(#"Tethya wilhelma-minuta", 
                      "Acropora hyacinthus-millepora", "Octopus bimaculoides-sinensis", 
-                     "Crassostrea angulata-virginica", "Crassostrea gigas-virginica", "Crassostrea angulata-gigas",
+                     "Magallana angulata-Crassostrea virginica", "Magallana gigas-Crassostrea virginica", "Magallana angulata-gigas",
                      "Daphnia pulex-magna", "Anastrepha obliqua-ludens", "Culex quinquefasciatus-pipiens", 
                      "Drosophila melanogaster-erecta", "Drosophila melanogaster-pseudoobscura", "Drosophila melanogaster-grimshawi", 
                      "Vespa crabro-velutina", "Bombus pyrosoma-terrestris", "Lytechinus variegatus-picta", 
@@ -56,7 +56,7 @@ pair_color_list = c(#"#a0e499aa",
 pair_color_list.no_alpha = substr(pair_color_list,1,7) # trim alpha
 letter_list = unlist(strsplit("ABCDEFGHIJKLMNOPQRSTUVWXYZ",""))
 
-pdf(file = "~/git/speciation_synteny/supplements_for_paper/cluster_alignment_lengths_v2.pdf", width = 8, height = 10, paper = "a4")
+pdf(file = "~/git/speciation_synteny/supplements_for_paper/cluster_alignment_lengths_v3.pdf", width = 8, height = 10, paper = "a4")
 par(mfrow=c(4,2), mar=c(4.5,4.5,4,1) )
 for (i in 1:length(id_file_list) ){
   cluster_id = read.table( paste0("~/git/speciation_synteny/06-prot_id_tables/",id_file_list[i]), 
@@ -110,13 +110,13 @@ for (i in 1:length(id_file_list) ){
 }
 dev.off()
 
-cras_dmel_numbers = c(6,4,5,10,11,12)
+cras_dmel_numbers = c(6,4,5,10,11,12)-1
 id_file_subset = id_file_list[cras_dmel_numbers]
-pair_genus_subset = c( "Crassostrea angulata-gigas", "Crassostrea angulata-virginica", "Crassostrea gigas-virginica",
+pair_genus_subset = c( "Magallana angulata-gigas", "Magallana angulata-\nCrassostrea virginica", "Magallana gigas-\nCrassostrea virginica",
                       "Drosophila melanogaster-\nerecta", "Drosophila melanogaster-\npseudoobscura", "Drosophila melanogaster-\ngrimshawi" )
 
-pdf(file = "~/git/speciation_synteny/figures_for_paper/cras_dmel_percent_id_histograms_v2.pdf", width = 8, height = 6 )
-#png(file = "~/git/speciation_synteny/figures_for_paper/cras_dmel_percent_id_histograms_v2.png", width = 720, height = 540 , res = 90)
+pdf(file = "~/git/speciation_synteny/figures_for_paper/figure03_cras_dmel_percent_id_histograms_v3.pdf", width = 8, height = 6 )
+#png(file = "~/git/speciation_synteny/figures_for_paper/figure03_cras_dmel_percent_id_histograms_v3.png", width = 800, height = 600 , res = 100)
 par(mfrow=c(2,3), mar=c(4.5,4.5,4,1) )
 for (i in 1:length(id_file_subset) ){
   cluster_id = read.table( paste0("~/git/speciation_synteny/06-prot_id_tables/",id_file_subset[i]), 
@@ -142,7 +142,7 @@ dev.off()
 
 id_clust_data = read.table("~/git/speciation_synteny/summary_data/identity_and_microsynteny_pairwise.tab", header =TRUE, sep = "\t")
 id_clust_data = id_clust_data[2:dim(id_clust_data)[1],]
-pdf(file = "~/git/speciation_synteny/supplements_for_paper/clustering_and_blast_overview_v2.pdf" , width = 8, height = 10, paper = "a4")
+pdf(file = "~/git/speciation_synteny/supplements_for_paper/clustering_and_blast_overview_v3.pdf" , width = 8, height = 10, paper = "a4")
 par(mfrow=c(4,2), mar=c(4.5,4.5,4,1))
 for ( i in 1:length(pair_genus_names) ){
   bm = matrix( data = c(id_clust_data$q_total[i], id_clust_data$t_total[i], 

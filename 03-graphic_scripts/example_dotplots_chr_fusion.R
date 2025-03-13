@@ -1,9 +1,12 @@
 # make dot plot of synteny between two genomes, based on unidirectional blast hits (i.e. not reciprocal)
 # last modified 2023-07-27
 
-#pdf(file = "~/git/speciation_synteny/figures_for_paper/combined_dotplots_v1.pdf", width = 12, height = 12)
-#png(file = "~/git/speciation_synteny/figures_for_paper/combined_dotplots_v1.png", width = 12, height = 12, units = "in", res = 90)
-#par(mfrow = c(2,2))
+genome1_lab = ""
+genome2_lab = ""
+
+#pdf(file = "~/git/speciation_synteny/figures_for_paper/figure02_combined_dotplots_v2.pdf", width = 12, height = 12)
+png(file = "~/git/speciation_synteny/figures_for_paper/figure02_combined_dotplots_v2.png", width = 12, height = 12, units = "in", res = 100)
+par(mfrow = c(2,2))
 all2Dfile = "~/git/speciation_synteny/04-macrosynteny_plots/Dmel6_vs_DereRS2.scaffold_synteny.tab.gz"
 all2Ddata = read.table(all2Dfile, sep="\t", stringsAsFactors=FALSE)
 categories = all2Ddata[,1]
@@ -226,7 +229,7 @@ par( mar=c(4.5,4.5,1,1) )
 plot(genome_x, genome_y, pch=16, 
      xlim = c(0,700000000), ylim = c(0,700000000),
      col=dotcolor, cex=0.5, cex.lab=1.4, 
-     main="", xlab="C. angulata", ylab="C. virginica", font.lab=3 ,
+     main="", xlab="M. angulata", ylab="C. virginica", font.lab=3 ,
      axes=FALSE )
 mtext("D",at = max(longscafs_x)*-0.08, cex = 2, line = -1)
 axis(1, at=longscafs_x, labels=round(longscafs_x/1000000,ifelse(longscafs_x<100000000, 1, 0)), cex.axis=0.6, gap.axis = -1 )

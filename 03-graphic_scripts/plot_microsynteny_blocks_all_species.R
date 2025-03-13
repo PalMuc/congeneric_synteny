@@ -23,7 +23,7 @@ block_headers = c("q_scaffold", "s_scaffold", "block_ID",
                   "bitscore" )
 pair_genus_names = c(#"Tethya wilhelma-minuta", 
                      "Acropora hyacinthus-millepora", "Octopus bimaculoides-sinensis", 
-                     "Crassostrea angulata-virginica", "Crassostrea gigas-virginica", "Crassostrea angulata-gigas",
+                     "Magallana angulata-C. virginica", "Magallana gigas-C. virginica", "Magallana angulata-gigas",
                      "Daphnia pulex-magna", "Anastrepha obliqua-ludens", "Culex quinquefasciatus-pipiens", 
                      "Drosophila melanogaster-erecta", "Drosophila melanogaster-pseudoobscura", "Drosophila melanogaster-grimshawi", 
                      "Vespa crabro-velutina", "Bombus pyrosoma-terrestris", "Lytechinus variegatus-picta", 
@@ -36,7 +36,7 @@ letter_list = unlist(strsplit("ABCDEFGHIJKLMNOPQRSTUVWXYZ",""))
 
 
 # make PDF
-pdf(file = "~/git/speciation_synteny/supplements_for_paper/microsynteny_blocks_overview_v2.pdf" , width = 8, height = 10, paper = "a4")
+pdf(file = "~/git/speciation_synteny/supplements_for_paper/microsynteny_blocks_overview_v3.pdf" , width = 8, height = 10, paper = "a4")
 par(mfrow=c(4,2), mar=c(4.5,4.5,4,1))
 # loop through each species, and make 1/8-page-size plot
 for (i in 1:(length(ms_file_list))){

@@ -120,7 +120,8 @@ get_protein_identity = function(filename){
   return(id_pct_no_gap.s)
 }
 
-pair_color_list = c("#a0e499aa", "#ac0a18aa", "#590aacaa", "#ec60bdaa", "#ec60bdaa","#ec60bdaa", "#220a7eaa",
+pair_color_list = c(#"#a0e499aa", 
+                    "#ac0a18aa", "#590aacaa", "#ec60bdaa", "#ec60bdaa","#ec60bdaa", "#220a7eaa",
                     "#2ecd14aa", "#44cd14aa", "#cd9714aa", "#cd9714aa", "#cd9714aa", 
                     "#ac0a18aa", "#cd1f14aa",
                     "#0da730aa", "#a6ab09aa", "#ab099daa", "#9fcd1aaf",
@@ -132,7 +133,7 @@ pair_color_list.no_alpha = substr(pair_color_list,1,7) # trim alpha
 
 id_file_list_dir = dir( "~/git/speciation_synteny/06-prot_id_tables/", "*.homologs_identity.tab.gz", recursive = TRUE)
 #id_file_list = id_file_list_dir[c(33,1,31,6,8,5,17,2,9,12,14,13,  27,4,28,29,3,7,32,18,19,30,20)]
-id_file_list = c("Tmi_V4b17_hintsutr_vs_TwiV4_AUG.homologs_identity.tab.gz", 
+id_file_list = c(#"Tmi_V4b17_hintsutr_vs_TwiV4_AUG.homologs_identity.tab.gz", 
                  "AhyaV1_vs_Amilv2.homologs_identity.tab.gz", 
                  "Obi_vs_Osi.homologs_identity.tab.gz", 
                  "Cang_vs_Cvir3.homologs_identity.tab.gz", 
@@ -156,14 +157,16 @@ id_file_list = c("Tmi_V4b17_hintsutr_vs_TwiV4_AUG.homologs_identity.tab.gz",
                  "OaurZZ_vs_OnilUMD.homologs_identity.tab.gz", 
                  "fThuAlb1_vs_fThuMac1.homologs_identity.tab.gz")
 
-pair_genus_names_short = c("Tethya", "Acropora", "Octopus", 
-                           "Crassostrea", "Crassostrea", "Crassostrea", "Daphnia", 
+pair_genus_names_short = c(#"Tethya", 
+                           "Acropora", "Octopus", 
+                           "Crassostrea", "Crassostrea", "Magallana", "Daphnia", 
                            "Anastrepha", "Culex", "D.mel-D.ere", "D.mel-D.pse", "D.mel-D.gri", 
                            "Vespa", "Bombus", 
                            "Lytechinus", "Mauremys", "Bufo", "Cervus",
                            "Perca", "Epinephelus", "Epinephelus", "Oreochromis", "Thunnus" )
 # sorted curve
-pdf(file = "~/git/speciation_synteny/figures_for_paper/sp_pair_protein_identity_v3.pdf", width = 6, height = 5)
+pdf(file = "~/git/speciation_synteny/figures_for_paper/sp_pair_protein_identity_v4.pdf", width = 6, height = 5)
+#png(file = "~/git/speciation_synteny/figures_for_paper/sp_pair_protein_identity_v4.png", width = 600, height = 500, res = 100)
 par(mar=c(1,4.5,4.5,1))
 plot( 0,0, type = 'n', xlim=c(0,14000), ylim=c(0.2,1), frame.plot=FALSE, axes=FALSE,
       xlab="", ylab="Percent identity between orthologous proteins" )
